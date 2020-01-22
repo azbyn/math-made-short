@@ -1,0 +1,9 @@
+*.log
+*.aux
+*.toc
+*.out
+_minted-*
+test
+a.out
+cpp_latex
+auto

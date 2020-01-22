@@ -1,0 +1,160 @@
+\documentclass{article}
+\usepackage{graphics}
+\usepackage{amsmath,amssymb, mathtools}
+\usepackage{amsfonts}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% \newtheorem{theo*}{Teorema}
+% %the [theo] signifies that all these environments share the same counter
+% \newtheorem{corol}[theo]{Corolarul}
+% \newtheorem{defin}[theo]{Defini\c{t}ia}
+% \newtheorem{exem}[theo]{Exemplul}
+% \newtheorem{exer}[theo]{Exerci\c{t}iul}
+% \newtheorem{lema}[theo]{Lema}
+% \newtheorem{prop}[theo]{Propozi\c{t}ia}
+% \newtheorem{rem}[theo]{Remarca}
+\newenvironment{proof}{\noindent\textbf{Demonstratie.}}{\hfill\rule{.5em}{.5em}}
+\newenvironment{theo}{\noindent\textbf{Th}}{}
+
+\geometry{a4paper,left=20mm,right=15mm,top=15mm,bottom=25mm}
+
+\newcommand{\parti}[2]{\frac{\partial #1}{ \partial #2}}
+\newcommand*{\R}{\mathbb{R}}
+\newcommand*{\PC}{\mathcal{PC}}
+%\newcommand*{\C}{\wCathbb{R}}
+
+% \makeatletter
+% \def\@seccntformat#1
+% \makeatother
+\begin{document}
+\subsection*{Ecuatii cu var separabile}
+\[ x' = f(t) g(x), \quad \mathrm{ devine: \quad} \int \frac{dx}{g(x)} = \int f(t) dt \]
+
+\subsection*{Ec omogene}
+\[x' = h\left(\frac{x}{t}\right)\]
+\subsection*{Ec dif ordin I}
+\[x' = a(t)x + b(t) \quad \quad x = e^{\int a(t)dt} \left( C + \int e^{-\int a(t) dt} b(t) dt \right)\]
+
+\subsection*{Ec Bernoulli}
+\[ x' = a(t)x + b(t) x^{\alpha}, \quad \text{ împărțim la \quad} x^{\alpha} \]
+\subsection*{Ec Riccati}
+\[ x' = a(t)x + b(t) x^2 + c(t), \quad x = \varphi(t) + \frac{1}{z} \]
+
+
+\subsection*{EDE}
+\[ \parti{F}{x} dx + \parti{F}{y} dy = 0, \quad \text{ sol: \quad} F(t, x) = c \]
+
+\subsection*{Ec Lagrange si Clairout (mere si cu $t = f(x, x')$)}
+\[ x' = t \varphi(x') + \psi(x'), \quad \text{derivam și } \quad x' = p \]
+
+\subsection*{Ec liniare de ordin $n$ cu coef constanți}
+\[ y^{(n)} + a_1 y^{(n-1)}+\cdots + a_ny = e^{at} \left( P^1(t) \cos(bt) + P^2(t) \sin(bt) \right)  \]
+\[ \tilde{y} (t) = t^m Q(t)e^{\lambda t}, \quad m = \text{multiplicitatea lui } \lambda,\quad \deg(Q) = \deg(P)  \]
+
+\subsection*{Ec Euler}
+\[ t^ny^{(n)} + a_1 t^{n-1}  y^{(n-1)}+\cdots + a_ny = f(t), \quad \quad t = e^s  \]
+\subsection*{Sist dif liniare cu coef constanți}
+Metoda substitutiei
+
+\subsection*{Stabilitate $x = \xi$ sol stationara}
+
+\[P_{J(\xi)} \text{ Hurwitzian} \iff \text{stabil}\]
+
+\subsection*{PDE}
+
+\[ \sum f_i(x) \parti{u}{x_i} = g(x) \quad \frac{dx_i}{f_i} = \cdots = \frac{dx_n}{f_n} = \frac{du}{g} \]
+\[ F(u_1,\cdots) = 0, \quad u_i \text{ integrale prime} \]
+
+
+\section*{Gut}
+\subsection*{Th inversare locala}
+\[\frac{d\varphi^{-1}}{dx}(x=\varphi(t)) = \cfrac{1}{\cfrac{d\varphi}{dt}(t)}, \quad\quad \varphi, \varphi^{-1} \in C^1\]
+
+\section*{Teorie}
+
+\subsection*{(1) EVS}
+  \[
+    \begin{cases}
+      x'= f(t) g(t), \quad f \in C^1(I = (t_1, t_2)), \quad g \in C^1(J = (x_1, x_2))\\
+      x(t_0) = x_0
+    \end{cases}
+  \]
+  Are sol unica $\forall x_0, t_0$ data de:
+  \[
+    x = G^{-1} \left( \int_{t_0}^{t} f(s)ds \right), \quad G(x) = \int_{x_0}^{x}\frac{du}{g(u)}
+  \]
+\subsection*{(2) Ec dif lin de ord I - FVC - amplificam $\exp(\int a(\tau))$}
+\subsection*{(3) Lema lui Gronwall, $k \geq 0$}
+\[x(t) \leq m + \int_a^t k(s) x(s) ds \implies x(t) \leq m \exp(\int_a^t k(s)ds) \]
+Derivam, amplificam cu $k(t)$ si apoi cu $\exp(-\int k(s) ds)$
+\subsection*{(4) $\exists!$ local - Th Picard}
+\[f : \Delta = [a, a+h] \times B(\xi, r) \to \R^n \in C^1(\Delta), \quad f \text{  Lipschitz pe } B \]
+\[pe [a, a+ (\delta = \min\left\{h, \frac{r}{M}\right\}), \quad x' = f(t, x) \text{\quad are sol unica: }\lim \]
+\[
+  \begin{dcases}
+    x_0(t) = \xi\\
+    x_{k+1}(t) = \xi + \int_a^t f(\tau, x_k(\tau) d\tau)
+  \end{dcases}\]
+\[  \| x_k(t) - x(t) \| \leq M \frac{L^k\delta^{k+1}}{(k+1)!} \]
+Th Peano: $ f \text{ cont } \implies \mathcal{PC} (I, \Omega, f, a, \xi) \text{\quad are cel putin o sol locala}$
+
+\subsection*{(5) PC ec ordin $n$, $g \in C^0(I\times \Omega)$}
+\[(PC) y^{n} = g(y, y', \ldots), \quad g \text {  Lipschitz} \implies \text{\quad sol unica pe } [a -\delta, a+\delta ] \]
+
+\subsection*{(6) Depedenta cont de data initiala, $f \in C^0([a. b] \times \R^n),$ lipschitz$, \quad x' = f(t, x)$}
+Lema: $\forall \xi \in \R^n,$ sol saturata $\PC(a, \xi)$ este globala\\
+Th: $\xi \mapsto x(\cdot, \xi)$ lipschitz ($\geq$ ec Voltera, lema Gronwall)
+\subsection*{(7) Sist dif liniare $\exists!$ global}
+\[x' = A(t)x +b(t), x(a) = \xi \text{ are sol unica   } \]
+dem: f, local apoi global lipschitz,  $\| A \| = \max\limits_i \{ \sum\limits_j |a_{ij}| \} $ e norma matriceala.
+\subsection*{(8) Sist dif liniare omogene, spatiul solutiilor $x = A(t)x$ }
+\[S = \{ x : I \to \R^n sol  \} \underset{sl}{\subseteq} C^1(I;\R^n);\quad \dim(S) = n;\quad \Gamma_a(x) = x(a), \text{izomorfism de sp lin} \]
+Def: $X = (X^i_j)$ sn matrice asociata sist de sol $\{x^1 \ldots x^n\}$\\
+Def: $\{x^1 \ldots x^n\}$ syst fundametal $\iff$ baza in $S \implies X$ mat fundametala \\
+Def: $W(t) = \det X(t)$ wronskian\quad $X$ fundamental $\iff W(t) \neq 0,\ \ \forall t \iff \exists a\ \  W(a) \neq 0$ (dem cu baza in $\R^n$)\\
+Th: $X$ mat fundamentala $\implies \forall Y$ mat fundamentala, $ Y(t) = X(t) C, \quad C \in M_{n\times n}(\R) $.\\
+Lema: $D(t) =(d_{i,j}), \quad D'(t) = \displaystyle \sum_k D_k(t), \quad D_k(t) = $ det obtinut linia derivand doar linia $k$\\
+Th Liouville: $W(t) = W(a) \exp\left( \int_a^t \mathrm{tr} A(s) ds \right)$
+
+\subsection*{(9) Formula variatiei constantelor}
+Th: $ x_{SGN} = x_{SGO}+ \tilde{x}_{SPN}$\\
+Th: Sol $x' = A(t)x+b(t)$ este $x(t) = X(t)\left( X^{-1}(a)\xi + \int_a^tX^{-1}(s)b(s) \right) $ (cautam $\tilde{x} = X(t)c(t)$)
+\subsection*{(10) Exponentiala de mat}
+$x' = Ax(t),$ not $S_A(t)=X(t), $mat cu$ X(0)= I $, avem $S_A(t+s) = S_A(t)S_A(s)$, $S_A(0)=I$, $\lim\limits_{t\to 0} S_A(t)\xi=\xi$
+$\displaystyle \frac{d}{dt} e^{tA} = A e^{tA} = e^{tA} A$
+\subsection*{(11) ec lin de ordin $n$ are sol global unica}
+\subsection*{(12) ec lin omogene de ordin $n$, sp sol-  Totu izomorf cu totu}
+\subsection*{(13) ec lin de ordin $n$ cu coef constanti: ec omogene -th generare syst fundamental}
+\subsection*{(14) T stabilitatii: Tipuri}
+Def $\varphi :\R_+ \to \Omega $ simplu stabila daca $\forall \varepsilon > 0, a \geq 0,\ \exists \delta(\varepsilon, a) > 0 $ ai $\forall \xi \in \Omega$
+cu $\|\xi - \varphi(a) \| \leq \delta$
+$x(\cdot, a, \xi)$ def pe $[a, \infty]$, $\|x(t,a,\xi) -\varphi \| \leq \varepsilon $\\
+Def: uniform stabila $\| \xi - \varphi(a) \| \leq \mu(a)$, și $\lim\limits_{t\to \infty} \| x(t, a, \xi) - \varphi(t) \| = 0$\\
+Daca nu deinde de $a $ at uniform stabila
+\subsection*{(15) Stabilitatea sist liniare}
+Th: tot sist (omogen sau neomogen) e la fel ca sol nula\\
+Th: E s. stabil daca are o mat fundamentala marginita, si at toate sunt marginite\\
+Th: E asimpt stabil daca are o mat cu $\lim\limits_{t\to \infty} \|X(t)\|=0$\\
+Th: uniform stabil daca $\|U(t,a) = X(t)X^{-1}(a)\| \leq M$\\
+Th: uniform asimpt stabil daca $\lim\limits_{t-a\to \infty} \|U(t,a) \| = 0$
+\subsection*{(16) Stab sist lin perturbate}
+Lema: $A$ hurwitziana daca $\|e^{tA}\| \leq M e ^{\omega t}$\\
+$x' = Ax + F(t,x), \quad F$ cont si local lipschitz, lipschitz pe $B(0, r) \subset \Omega$\\
+Th Poincare-Liapunov: daca $L < \displaystyle \frac{\omega}{M}$ at sol nula (SLP) e asimpt stab\\
+Th Perron: $\| F(t, x) \| \leq \alpha(\|x\|) $ și $\lim\limits_{\rho\to 0}\frac{\alpha(\rho)}{\rho} = 0$ at sol nula asimpt stab
+\subsection*{(17) Sist autonom, sp fazelor}
+Traiectorie/ orbita = Im$(\varphi)$
+Prop: Multimea sol e inchisa la transaltii in rap cu $t$\\
+Prop: Prin orice pct trece o singura traiectorie\\
+Prop: Traiectoria unui pct nestationar e o curba regulata de $C^1$, (cu parametrizare $x = \varphi(t)$)
+\subsection*{(18) Integrale prime pt sist autonome}
+Def: $U $ integrala prima: $\in C^1$, $\nabla U(\xi) = 0$ izolate, $U(x(t)) = c\  \forall x$ sol \\
+Th: conditie echivalenta: $\langle \nabla U(\xi), f(\xi) \rangle= 0\ \forall \xi$\\
+Def $U_1, \ldots U_k$ functional independente $\displaystyle \iff \mathrm{rang} \left( \parti{U_i}{x_j}(\xi) \right) = k $ \\
+Th: In vecinatatea oricarui pct nestationar exista exact $n-1$ integrale prime functional independente\\
+Th: Fie $U_1\ldots U_{n-1}$ integrale prime functional independente, at orice alta int prima e de forma $V(x) = F(U_1(x) \ldots U_{n-1}(x))$
+\end{document}

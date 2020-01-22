@@ -1,0 +1,146 @@
+\documentclass{article}
+\usepackage{graphics}
+\usepackage{amsmath,amssymb, mathtools}
+\usepackage{amsfonts}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+%\usepackage[T2A, T1]{fontenc}
+
+\newenvironment{proof}{\noindent\textbf{Demonstratie.}}{\hfill\rule{.5em}{.5em}}
+\newenvironment{theo}{\noindent\textbf{Th}}{}
+
+\geometry{a4paper,left=20mm,right=15mm,top=15mm,bottom=25mm}
+
+\newcommand{\parti}[2]{\frac{\partial #1}{ \partial #2}}
+\newcommand{\partii}[2]{\frac{\partial^2 #1}{ \partial #2^2}}
+\newcommand*{\R}{\mathbb{R}}
+\newcommand*{\grad}{\mathrm{grad}}
+\renewcommand*{\div}{\mathrm{div}}
+\newcommand*{\rot}{\mathrm{rot}}
+\newcommand*{\Fr}{\mathrm{Fr}}
+%\newcommand*{\C}{\wCathbb{R}}
+
+% \makeatletter
+% \def\@seccntformat#1
+% \makeatother
+\begin{document}
+\subsection*{Gut}
+\[ \int_{-\infty}^{\infty}e^{-x^2}dx = \sqrt{\pi} \text{\quad(Gauß)} \]
+\[ \Gamma(p) = \int_0^{\infty} x^{p-1}e^{-x}dx = (p+1)!, \quad p > 0, \quad \Gamma(\frac{1}{2}) = \sqrt(\pi)  \]
+\[ \beta(p, q) = \int_0^{1} x^{p-1}(1-x)^{q-1}dx = \frac{\Gamma(p)\Gamma(q)}{\Gamma(p+q)}, \quad p > 0, q > 0 \]
+\[ \Gamma(p)\Gamma(1-p)= \frac{\pi}{\sin(p\pi)}, \quad p \in (0, 1) \]
+Coord polare: $f(x,y) = \rho f(\rho \cos \theta, \rho \sin\theta)$ \\
+Coord polare generalizate: $f(x,y) = ab\rho f(a\rho\cos\theta, b\rho\sin\theta) $\\
+Coord cilindrice: $f(x, y, z) = \rho f(\rho\cos\theta, \rho\sin\theta)$, \\
+Sferice: $f(x, y,z) = \rho^2\sin\varphi f(\rho \sin\theta\cos\varphi, \rho\sin\theta\sin\varphi, \rho\cos\theta),\quad \theta \in [0, \pi], \varphi \in[0, 2\pi]$\\
+\subsection*{Integrale curbilinii}
+\subsubsection*{De speta I}
+\[ \int_{\gamma} f(x, y, z)ds = \int_a^bf(x(t), y(t), z(t)) \sqrt{(x'(t))^2+(y'(t))^2+(z'(t))^2} dt \]
+\subsubsection*{De speta II}
+\[ \int_{\gamma}\overline{F}d\bar{r} = \int_{\gamma} P(x,y) dx+ Q(x,y)dy = \int_a^b \left[P(x(t), y(t))x'(t) + Q(x(t), y(t)) y'(t) \right]dt \]
+\[ \int_{\gamma} \parti{P}{x}dx+\parti{Q}{y}dy = f(B)- f(A), \quad \text{unde $A, B$ extremitatile curbei (sn forma dif exacta) } \]
+\subsection*{Integrale duble}
+\subsubsection*{Masura Jordan în plan}
+Fie $E = \bigcup_i D_i, \quad D_i \text{ dreptunghiuri disjuncte 2 cate 2}$.\\
+$E$ sn multime elementara\\
+$\sigma(E) = \sum_i \sigma(D_i), \quad \sigma - $ aria\\
+$\sigma^{\le}(M)=\sup\{\sigma(E), E \subset M, E -\text{elementara} \}$\\
+$\sigma^{\ge}(M)=\inf\{\sigma(E), E \supset M, E -\text{elementara} \}$\\
+Daca $\sigma^{\le}(M)=\sigma^{\ge}(M) $ at $M$ este Masurabila Jordan.\\
+Th (caracterizare): O multime $M \subset \R^2$ este măsurabilă Jordan $\iff$ frontiera sa este $J$-neglijabilă\\
+Prop: $\sigma(D_1\cup D_2) = \sigma(D_1) + \sigma(D_2) - \sigma(D_1\cap D_2)$
+\subsubsection*{Simplu in raport cu $Oy$}
+$ a\le x \le b,\ \ \alpha(x)\le y \le \beta(x), \quad \alpha, \beta $ continue pe $[a, b]$ \\
+Analog cu simplu in raport cu $Oy$\\
+Daca $\gamma: [a, b] \to \R^2$ rectificabil, at $\gamma([a, b])\ J$-neglijabilă\\
+Multimi Jordan nemasurabile - fractals and squiggly stuff
+\subsubsection*{Integrale duble}
+Def: luam diviziune, puncte si $\displaystyle \lim\limits_{\|\Delta\to 0\|}s(f;\Delta, P) = \sum_{i\ge 0} f(P_i)\sigma(D_i)=\iint_Df(M)d\sigma=\iint_Df(x,y)dxdy$\\
+Proprietati ca la integrale Riemann
+\subsection*{Schimbare de variabila}
+\[
+  T: \begin{cases}
+    x = \varphi(u, v)\\
+    y = \psi(u, v),
+  \end{cases}
+   (u, v) \in \Omega
+\]
+Transformarea $T:\Omega'\to\Omega$ este \emph{regulata} daca $\varphi, \psi \in C^1(\Omega')$, $T$ biunivoca, $J = \frac{D(\varphi, \psi)}{D(u, v)} \neq 0, \quad
+\forall (u, v) \in \Omega$\\
+Def: $f$ sn \emph{admisibila} daca este marginita si continua cu exceptia unei multimi $J$-neglijabile\\
+Th: $f$ admisibila, $T$ regulata, $D^* = T^{-1}(D)$\quad $\displaystyle \iint_D f(x, y) dxdy = \iint_{D^*} f(\varphi(u, v), \psi(u, v))|J| du dv $\\
+def : $D$ domenu standard (poate fi descompus in reuniune finita de dom simple in raport cu ambele axe)\\
+Orientare pozitiva: frontiera este lastata in stanga\\ 
+Formula Riemann-Green: $D$ domenu standard inchis $P, Q \in C^1(D)$
+\[\iint \left( \parti{Q}{x} - \parti{P}{y} \right) = \int_{\mathrm{Fr}D} Pdx+Qdy, \quad \mathrm{Fr}D \text{  orientata pozitiv} \]
+\subsection*{Integrale triple}
+\subsubsection*{Masura Jordan in spatiu}
+Same spiel as in 2d, da cu paralelipipede dreptunghice paralele cu axele.
+\subsubsection*{Domenii simple}
+Feliuțe; intre 2 plane: $\displaystyle \iiint_V f(x, y, z) dv = \int_c^d \left( \iint_{D_z} f(x, y,z) dx dy \right) dz$\\
+Bețe; intre 2 suprafete: $\displaystyle \iiint_V f(x, y, z) dv = \iint_D \left( \int_{\varphi_1(x,y)}^{\varphi_2(x,y)} f(x, y,z) dz \right) dx dy$\\
+\subsubsection*{Schimbarea de variabila}
+$T: x= \varphi(u, v, w), y= \psi(u, v, w), z= \chi(u, v, w), cu \varphi, \psi, \chi \in C^1,$ biunivoce si cu $J \neq 0 $,
+\[ \iiint_V f(x, y, z) dv = \iiint_{V'} f(\varphi(u, v, w), \psi(u, v, w), \chi(u, v, w)) \left|\frac{D(\varphi, \psi, \chi)}{D(u,v,w)}\right| dv' \]
+\subsection*{Integrale de suprafață}
+ec explicita: $z= f(x, y)$\\
+ec implicita: $F(x,y,z)=0$\\
+ec param: $x = \varphi(u,v)\ldots$\\
+\subsubsection*{suprafete explicite (aproximam cu diferentiala )}
+\[d\sigma = \sqrt{p^2+q^2+1}dx dy, \quad p = \parti f x, q = \parti f y\]
+\subsubsection*{suprafete param}
+Functiile de clasa $C^1$, Matricea jacobiana are rang maximal 2 in orice pct, reprezentarea e biunivoca\\
+\[d\sigma = \sqrt{A^2+B^2+C^2}du dv = \sqrt{EG-F^2}du dv\]
+\[A = \frac{D(\psi, \chi)}{D(u, v)}, B = \frac{D(\chi, \varphi)}{D(u, v)}, C = \frac{D(\varphi, \psi)}{D(u, v)} \]
+\[ a = \left( \parti{\varphi}{u}, \parti{\psi}{u}, \parti{\chi}{u} \right),
+  b = \left( \parti{\varphi}{v}, \parti{\psi}{v}, \parti{\chi}{v} \right)\quad
+  E = \langle a, a \rangle,
+  F =\langle a, b \rangle,
+  G =\langle b, b \rangle
+\]
+\subsubsection*{speta I}
+def - same spiel as the previous.
+\[\iint_{\Sigma} f(x, y,z) d\sigma = \iint_{D} f(x(u, v), y(u,v), z(u,v)) \sqrt{EG-F^2}du dv\]
+\subsubsection*{speta II}
+\[ \iint_{\Sigma}\bar{v}\cdot\bar{n} d\sigma, \quad \bar{n} = \text{versorul normalei la suprafață} \]
+\[ \iint_{\Sigma} Pdy dx + Q dz dx + R dx dy = \iint_{\Sigma} Pn_x+Qn_y+Rn_z d\sigma, \quad \bar{n} = (n_x, n_y, n_z) \]
+\subsubsection*{Stokes, Fr $= $ bord, $\Sigma$ regulata}
+\[ \iint_\Sigma \left( \parti Q x - \parti P y \right) dx dy
+ + \left( \parti R y - \parti Q z \right)  dy dz
+ +\left( \parti P z - \parti R x \right) dz dx = \int_{\mathrm{Fr}\Sigma} Pdx+Qdy+Rdz \]
+\subsubsection*{Gauß-Остроградський - domenii simple in raport cu toate axele}
+\[ \iint_{\mathrm{Fr}\Sigma}Pdydz+Qdzdx+Rdxdy = \iiint_V \left( \parti P x + \parti Q y + \parti R z \right) dx dy dz \]
+\subsection*{Teoria Campurilor}
+\[ \nabla = (\parti{}{x}, \parti{}{y}, \parti{}{z}) \]
+\[ \nabla \cdot \nabla = \nabla^2 = \Delta = \div(\nabla) = \partii{}{x}+\partii{}{y} +\partii{}{z} \]
+\[ \grad \varphi = \nabla \varphi = (\parti{\varphi}{x}, \parti{\varphi}{y}, \parti{\varphi}{z}) \]
+\[ \bar{v} (x, y, z) = (P(x, y, z), Q(x,y,z ), R(x, y,z)) \]
+\[ \div_a\bar{v} = \nabla \cdot \bar{v}(a) = \parti{P}{x}(a)+\parti{Q}{y}(a) + \parti{R}{z}(a)\]
+\[ \rot_a\bar{v} = \nabla \times \bar{v}(a) = \begin{vmatrix}
+    \bar{\imath} & \bar{\jmath} & \bar{k}\\
+    \parti{}{x}& \parti{}{y} & \parti{}{z} \\
+    P & Q & R\\
+  \end{vmatrix} \]
+Def: $\bar{v}$ sn \emph{camp de gradienti} în $D$ daca $\exists\, \varphi \in C^1(D) $ cu $\bar{v} = \grad \varphi $
+\subsubsection*{proprietati}
+$\nabla c = 0$\\
+$\nabla \cdot \bar{c} = 0$\\
+$\nabla \times \bar{c} = \bar 0$\\
+Improvisable:\\
+$\div_a(\alpha \bar{v} + \beta \bar{w}) = \alpha \div_a(\bar v) + \beta \div_a(\bar w)$\\
+$\rot_a(\alpha \bar{v} + \beta \bar{w}) = \alpha \rot_a(\bar v) + \beta \rot_a(\bar w)$\\
+$\div_a(\varphi \bar v) = \varphi(a) \div_a(\bar v) + \bar v (a) \cdot \grad_a \varphi$\\
+$\rot_a(\varphi \bar v) = \varphi(a) \rot_a(\bar v) - \bar v (a) \times \grad_a \varphi$\\
+$\div(\bar v \times \bar w)= \bar w \cdot \rot \bar v - \bar v \cdot \rot \bar w$\\
+$\div(\bar c \times \bar w)= \bar r \cdot \rot \bar c - \bar c \cdot \rot \bar r, \quad \bar r = $ vector de pozitie \\
+\subsection*{aplicatii}
+\subsubsection*{Rieman-Green}
+\[ \int_{\Fr D} \bar v \cdot d\bar{r} = \iint_D \left( \parti{Q}{x} - \parti{P}{y} \right) dx dy, \quad \bar{v} = (P(x,y), Q(x,y)) \]
+\subsubsection*{Stokes}
+\[ \int_{\Fr S} \bar v \cdot d \bar r = \iint_S \rot \bar v \cdot \bar N d \sigma \]
+\subsubsection*{Gauß-Остроградський}
+\[\iiint_V (\div \bar v) dx dy dz = \iint_{\Fr V} (\bar v \cdot \bar n) d\sigma \]
+\end{document}
