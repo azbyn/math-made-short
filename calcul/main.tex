@@ -35,7 +35,7 @@
 Coord polare: $f(x,y) = \rho f(\rho \cos \theta, \rho \sin\theta)$ \\
 Coord polare generalizate: $f(x,y) = ab\rho f(a\rho\cos\theta, b\rho\sin\theta) $\\
 Coord cilindrice: $f(x, y, z) = \rho f(\rho\cos\theta, \rho\sin\theta)$, \\
-Sferice: $f(x, y,z) = \rho^2\sin\varphi f(\rho \sin\theta\cos\varphi, \rho\sin\theta\sin\varphi, \rho\cos\theta),\quad \theta \in [0, \pi], \varphi \in[0, 2\pi]$
+Sferice: $f(x, y,z) = \rho^2\sin\theta f(\rho \sin\theta\cos\varphi, \rho\sin\theta\sin\varphi, \rho\cos\theta),\quad \theta \in [0, \pi], \varphi \in[0, 2\pi]$
 \subsection*{Integrale curbilinii}
 \subsubsection*{De speta I}
 \[ \int_{\gamma} f(x, y, z)ds = \int_a^bf(x(t), y(t), z(t)) \sqrt{(x'(t))^2+(y'(t))^2+(z'(t))^2} dt \]
@@ -84,7 +84,7 @@ Same spiel as in 2d, da cu paralelipipede dreptunghice paralele cu axele.
 Feliuțe; intre 2 plane: $\displaystyle \iiint_V f(x, y, z) dv = \int_c^d \left( \iint_{D_z} f(x, y,z) dx dy \right) dz$\\
 Bețe; intre 2 suprafete: $\displaystyle \iiint_V f(x, y, z) dv = \iint_D \left( \int_{\varphi_1(x,y)}^{\varphi_2(x,y)} f(x, y,z) dz \right) dx dy$\\
 \subsubsection*{Schimbarea de variabila}
-$T: x= \varphi(u, v, w), y= \psi(u, v, w), z= \chi(u, v, w), cu \varphi, \psi, \chi \in C^1,$ biunivoce si cu $J \neq 0 $,
+$T: x= \varphi(u, v, w), y= \psi(u, v, w), z= \chi(u, v, w), cu\ \varphi, \psi, \chi \in C^1,$ biunivoce si cu $J \neq 0 $,
 \[ \iiint_V f(x, y, z) dv = \iiint_{V'} f(\varphi(u, v, w), \psi(u, v, w), \chi(u, v, w)) \left|\frac{D(\varphi, \psi, \chi)}{D(u,v,w)}\right| dv' \]
 \subsection*{Integrale de suprafață}
 ec explicita: $z= f(x, y)$\\
