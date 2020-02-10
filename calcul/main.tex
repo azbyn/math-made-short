@@ -21,27 +21,138 @@
 \renewcommand*{\div}{\mathrm{div}}
 \newcommand*{\rot}{\mathrm{rot}}
 \newcommand*{\Fr}{\mathrm{Fr}}
-%\newcommand*{\C}{\wCathbb{R}}
 
+\renewcommand*{\epsilon}{\varepsilon}
+\renewcommand*{\phi}{\varphi}
+\newcommand*{\fint}[1]{\int_{a}^{b-0} #1(x) dx}
+\newcommand*{\fintxy}[1]{\int_{a}^{b-0} #1(x,y) dx}
+\newcommand*{\finty}[1]{\int_{a}^{\infty} #1(x) dx}
+%\newcommand*{\C}{\wCathbb{R}}
 % \makeatletter
 % \def\@seccntformat#1
 % \makeatother
 \begin{document}
-\subsection*{Gut}
-\[ \int_{-\infty}^{\infty}e^{-x^2}dx = \sqrt{\pi} \text{\quad(Gauß)} \]
+\section{Partial}
+\subsection*{Integrale improprii}
+Th Cauchy (muda): $f : [a, b) \to \R$ integrabla pe $[a, b) \iff \forall\ \varepsilon > 0\ \exists b_{\epsilon} $ aî $\forall b', b'' \in [b_{\varepsilon}, b)$ at
+$\left| \int_{b'}^{b''} f(x)dx \right| <\epsilon $
+\subsubsection*{Prop}
+Ca la Riemann (Aditivitate in rap cu intervalul, orice combinatie liniara e integrabila, pozitivitate)\\
+Th: $\left | \int_a^{b-0} f(x)dx \right | \leq \int_a^{b-0} |f(x)|dx$\\
+Def: absolut convergenta - daca $g(x) = |f(x)|$ este convergenta
+\subsubsection*{Criterii de convergenta - semn pozitiv}
+
+\textbf{Comparatie cu inegalități}: Fie $f, g: [a, b) \to \R_{+}$ aî $f(x) \leq g(x),\ \forall\ x$ at:\\
+\quad a) daca $\int_a^{b-0} g(x)dx\quad (C)$ at $\int_a^{b-0} f(x)dx\quad (C)$\\
+\quad b) daca $\int_a^{b-0} f(x)dx\quad (D)$ at $\int_a^{b-0} g(x)dx\quad (D)$
+\\
+\textbf{Comparație cu limită}: $f, g: [a, b) \to \R_{+}$ dacă
+$\exists\,\lim\limits_{x\nearrow b} \frac{f(x)}{g(x)} = l$ at:\\
+\quad a) $l \in (0, \infty) \implies \fint{f} \sim \fint{g}$\\
+\quad b) $l = 0$ și $\fint{g}\quad (C) \implies \fint{f}\quad (C)$\\
+\quad c) $l = \infty$ și $\fint{g}\quad (D) \implies \fint{f}\quad (D)$
+\\
+\textbf{Crit în $\alpha$} (speța I): \quad $f: [a, \infty) \to \R_+$\\
+\quad a) dacă $\exists\, \alpha > 1 $ aî $\exists \lim\limits_{x\nearrow \infty} x^\alpha f(x) < \infty \implies \finty{f}\quad (C)$\\
+\quad b) dacă $\exists\, \alpha \leq 1 $ aî $\exists \lim\limits_{x\nearrow \infty} x^\alpha f(x) > 0 \implies \finty{f}\quad (D)$
+\\
+\textbf{Crit în $\lambda$} (speța II): \quad $f: [a, b) \to \R_+$\\
+\quad a) dacă $\exists\, \lambda < 1 $ aî $\exists \lim\limits_{x\nearrow b}
+(b-x)^\lambda f(x) < \infty \implies \fint{f}\quad (C)$\\
+\quad b) dacă $\exists\, \alpha \geq 1 $ aî $\exists \lim\limits_{x\nearrow b}
+(b-x)^\lambda f(x) > 0 \implies \fint{f}\quad (D)$
+
+\subsubsection*{Criterii de convergenta - semn variabil}
+\textbf{Dirichlet} Fie $f, g : [a, b) \to \R$. Dacă $\fint{f}$ are integrale partiale marginite
+($\forall A \in [a, b), \left| \int_a^A f(x)dx \right| \leq M$)
+și $g $ monotonă cu $\lim\limits_{x\nearrow b} g(x) = 0$ at $\fint{f(x)g}\quad (C)$
+\\
+\textbf{Abel} Fie $f, g : [a, b) \to \R$. Dacă $\fint{f}\quad (C)$ și $g$ monotona și mărginită at $\fint{f(x)g}\quad (C)$
+
+\subsection*{Integrale improprii cu parametru $f: [a, b) \times \Delta \to \R$}
+Def: $\int_a^{b}f(x,y)dx $ \textbf{uniform convergenta} pe $\Delta$ la
+\(I(\cdot)\) dacă $\forall\ \epsilon > 0, \exists\, \delta \in [a, b)$ aî
+$\forall\ \beta \in (\delta, b)$\\
+\(\left| \int_{a}^{\beta} f(x, y)dx - I(y) \right| < \epsilon,\quad \forall\ y \in \Delta \)
+% \subsubsection*{Criterii}
+\textbf{Weierstraß}: Fie $f\ldots$. Daca $\exists\ g: [a,b)\to \R$ aî\\
+\quad a) $|f(x, y)| \le g(x) \forall y \in \Delta$\\
+\quad b) $\fint{g}\quad (C)$\\
+at: $\int_a^{b-0}f(x,y)dx$ Uniform și absolut convergentă pe $\Delta$
+\\
+\textbf{Dirichlet} Fie $f, g : [a, b) \times \Delta \to \R$. Dacă $\fintxy{f}$ are integrale partiale marginite uniform pe $\Delta$
+($\forall A \in [a, b), \forall\, y \in \Delta,  \left| \int_a^A f(x,y)dx \right| \leq M$)
+și $g $ monotonă în raport cu $x, \forall y \in \Delta$ cu $\lim\limits_{x\nearrow b} g(x) = 0$\\
+at $\fintxy{f(x, y)g}\quad (UC \text{ pe }\Delta)$
+\\
+\textbf{Abel} Fie $f, g : [a, b) \to \R$. Dacă $\fintxy{f}\quad (UC)$ și $g$ monotona în rap cu $x \forall\ y$ și mărginită\\ at $\fintxy{f(x, y)g}\quad (UC)$
+
+\subsubsection*{Teoreme}
+\textbf{Trecerea la limită} $y_0$ pct de acumulare. Dacă\\
+\quad a)  $\exists\ \lim\limits_{y\to y_0}f(x,y) =l$ uniform in rap cu $x$ pe orice compact\\
+\quad b) $\fintxy{f} \quad (UC)$ pe $\mathcal{V}(y_0)$\\
+at $\fint{l} (C)$ și $\lim\limits_{y \to y_0} \fintxy{f} = \fintxy{\lim\limits_{y \to y_0}f}$
+\\
+\textbf{Continuitate} $f: [a, b) \times [c, d]\to \R$\\
+$f$ cont\\
+$\fintxy{f}$ uc pe $[c, d]$\\
+at $I$ cont pe $[c,d]$
+\\
+\textbf{Derivabilitate} $f: [a, b) \times [c, d]\to \R$\\
+$\exists\ \parti{f}{y}$ cont\\
+$\fintxy{f}$ uc pe $[c, d]$\\
+at $I'(y) = \fintxy{\parti{f}{y}}$
+\\
+\textbf{Integrabilitate} $f: [a, b) \times [c, d]\to \R$\\
+$f(\cdot,\cdot)$ cont\\
+$\fintxy{f}$ uc pe $[c, d]$\\
+at $\int_d^c I(y) dy = \int_a^b\left( \int_c^d f(x,y) dy \right)dx$
+
+\subsubsection*{Integrale remarcabile}
+\textbf{Dirichlet} $\int_0^\infty \frac{\sin tx}{x}dx = \frac{\pi}{2}$\\
+\textbf{Gauß} $\int_{-\infty}^\infty e^{-x^2}dx=\sqrt{\pi}$\\
+\textbf{Euler}\\
+$\Gamma, \ln \circ \Gamma $ - convexe 
 \[ \Gamma(p) = \int_0^{\infty} x^{p-1}e^{-x}dx = (p+1)!, \quad p > 0, \quad \Gamma\left(\frac{1}{2}\right) = \sqrt{\pi}  \]
 \[ \beta(p, q) = \int_0^{1} x^{p-1}(1-x)^{q-1}dx = \frac{\Gamma(p)\Gamma(q)}{\Gamma(p+q)}, \quad p > 0, q > 0 \]
 \[ \Gamma(p)\Gamma(1-p)= \frac{\pi}{\sin(p\pi)}, \quad p \in (0, 1) \]
+\[ \Gamma(p) = \frac{e^{-\gamma p}}{p} \prod_{k\geq 1}
+  \left(1+\frac{p}{k}\right)^{-1} e^{\frac{p}{k}}, \quad \forall\ p>0\quad\quad
+\quad \gamma = \lim\limits_{n\to\infty} (1+\frac{1}{2}+\cdots\frac{1}{n}- \ln n)
+\]
+\subsection*{Integrale Curbilinii}
+Drumuri echivalente: $\gamma_1 \sim \gamma_2 \iff \gamma_1(t) = \gamma_2{\phi(t)}$, \\
+Daca $\phi$ crescatoare strict, $\implies$ echivalente strict,\\
+Daca $\phi$ monotona, $\implies$ echivalente în sens larg
+\subsubsection*{De speta I}
+\[ \int_{\gamma} f(x, y, z)ds = \int_a^bf(x(t), y(t), z(t)) \sqrt{(x'(t))^2+(y'(t))^2+(z'(t))^2} dt \]
+
+\subsubsection*{De speta II}
+\[ \int_{\gamma}\overline{F}d\bar{r} = \int_{\gamma} P(x,y) dx+ Q(x,y)dy = \int_a^b \left[P(x(t), y(t))x'(t) + Q(x(t), y(t)) y'(t) \right]dt \]
+\subsubsection*{Th}
+\textbf{Drum închis} Capetele egale\\
+\textbf{Forma Inchisă} $\parti{P}{y} = \parti{Q}{x}$ at $\alpha = Pdx+Qdy$\\
+\textbf{Independența de drum} $\int_\gamma df = f(B) - f(A)$\\
+\textbf{Th caracterizare Independența de drum} Sunt echivalente\\
+\quad - $\alpha$ exactă\\
+\quad - $\int_\gamma$ independenta de drum\\
+\quad - $\int_\gamma = 0$ pe orice drum inchis \\
+\textbf{Poincare} $\alpha \in C^1$ închisă pe deschis $\implies \forall x\in D$
+$df = \alpha$ local
+\\
+Pe mulțimi stelate, ($\exists x_0$ cu segmentul $[x_0, x] \subseteq D \forall x$)
+At $\alpha$ este exacta pe $D$
+
+
+
+\newpage
+
+\section{Sesiune}
+\subsection*{Gut}
 Coord polare: $f(x,y) = \rho f(\rho \cos \theta, \rho \sin\theta)$ \\
 Coord polare generalizate: $f(x,y) = ab\rho f(a\rho\cos\theta, b\rho\sin\theta) $\\
 Coord cilindrice: $f(x, y, z) = \rho f(\rho\cos\theta, \rho\sin\theta)$, \\
 Sferice: $f(x, y,z) = \rho^2\sin\theta f(\rho \sin\theta\cos\varphi, \rho\sin\theta\sin\varphi, \rho\cos\theta),\quad \theta \in [0, \pi], \varphi \in[0, 2\pi]$
-\subsection*{Integrale curbilinii}
-\subsubsection*{De speta I}
-\[ \int_{\gamma} f(x, y, z)ds = \int_a^bf(x(t), y(t), z(t)) \sqrt{(x'(t))^2+(y'(t))^2+(z'(t))^2} dt \]
-\subsubsection*{De speta II}
-\[ \int_{\gamma}\overline{F}d\bar{r} = \int_{\gamma} P(x,y) dx+ Q(x,y)dy = \int_a^b \left[P(x(t), y(t))x'(t) + Q(x(t), y(t)) y'(t) \right]dt \]
-\[ \int_{\gamma} \parti{P}{x}dx+\parti{Q}{y}dy = f(B)- f(A), \quad \text{unde $A, B$ extremitatile curbei (sn forma dif exacta) } \]
 \subsection*{Integrale duble}
 \subsubsection*{Masura Jordan în plan}
 Fie $E = \bigcup_i D_i, \quad D_i \text{ dreptunghiuri disjuncte 2 cate 2}$.\\
