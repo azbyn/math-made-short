@@ -1,0 +1,107 @@
+#+BIND: org-latex-image-default-width ""
+#+OPTIONS: toc:nil
+#+OPTIONS: num:nil
+#+LATEX_HEADER: \usepackage{geometry}\geometry{a4paper,left=15mm,right=20mm,top=20mm,bottom=30mm}
+
+problema:
+[[./problema.png]]
+
+BTW, \(y \) de aici e \(y\)-ul aflat la ex 1
+
+avem ponderea $p(x) = 1$
+\medskip
+
+pentru ca iti cere \(\displaystyle \int y(x) dx \text{ aka } \int y(x) \cdot 1 dx \)\\
+daca cerea de ex \(\displaystyle \int e^{-x} y(x) dx\), atunci ponderea era \( e^{-x} \)
+\medskip
+
+si cum ponderea e 1, "o formula gauss" inseamna Gauss-Legendre\\
+de ex daca era \( e^{-x}\) era gauss-laguerre
+\medskip
+
+si acum ar trebui sa convertim functia de la una pe $[-1, 2]$ la una pe $[-1, 1]$ (practic e schimbare de variabila)\\
+(Gauss-Legendre cere ca functia sa fie pe intervalul $[-1, 1]$)\\
+https://en.wikipedia.org/wiki/Gauss%E2%80%93Legendre_quadrature
+\medskip
+
+deci folosim:
+[[./a,b to -1,1.png]]
+
+formula e
+#+attr_latex: :width .6\linewidth
+[[./formula.png]]
+
+aici e un tabel pt alte ponderi (am vazut doar ponderea 1 in exercitii)\\
+(sau newton cotes- dar asta e alta treaba)\\
+https://en.wikipedia.org/wiki/Gaussian_quadrature
+
+[[./table.png]]
+
+cum cere pe 3 noduri, \(n = 3\)\\
+deci avem nevoie de al 3-lea polinom lagrange - notat de profa cu \(T_3\)
+\medskip
+
+pe care-l calculam asa
+
+#+attr_latex: :width .6\linewidth
+[[./rodrigues.png]]
+
+si ar trebui sa dea atat
+
+#+attr_latex: :width .4\linewidth
+[[./lagrange3.png]]
+
+(sunt mai multe valori aici:\\
+https://mathworld.wolfram.com/LegendrePolynomial.html)
+\medskip
+
+si trebuie sa afli radacinile polinomului
+
+\medskip
+aici are o expresie mai simpla si se vede aproape automat ca radacinile sunt:\\
+\( 0, \pm \sqrt{5/3} \)
+
+\medskip
+deci in formula asta stim \(n =3\), stim \(x_i = \) radacinile, stim functia definita pe \([-1, 1]\)
+
+#+attr_latex: :width .6\linewidth
+[[./formula.png]]
+
+deci mai avem nevoie doar de \( w_i\)
+\medskip
+
+care au minunata forma:
+
+#+attr_latex: :width .4\linewidth
+[[./w_i.png]]
+
+cu \( P_n = T_3\) notatia profei\\
+adica asta:
+
+#+attr_latex: :width .4\linewidth
+[[./lagrange3.png]]
+
+si acum ai tot ce-ti trebuie, doar inlocuiesti
+(si speri la ce e mai bun :))) )
+\medskip
+
+si asta e restul:
+
+[[./rest.png]]
+
+aici calculam cu functia pe care am facut-o pe \( [-1, 1]\)
+si acel \(p_n\) (cred că) e polinomul lagrange la care impartim prin coef lui \(x^3\) (adica \(\frac{5}{2}\)):
+
+\[x^3 - \frac{6}{5} x\]
+
+(de aici
+https://en.wikipedia.org/wiki/Gaussian_quadrature#Error_estimates)
+
+\medskip
+
+si acum ultima parte din problema:\\
+se poate itera daca \(w_i > 0\), \( \forall i = 1..n \)
+\medskip
+
+sanity check:\\
+calculeaza integrala (cu wolfram alpha eventual) si verifica daca „seamană” cu ce ti-a dat

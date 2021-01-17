@@ -1,0 +1,44 @@
+ex 1:
+https://en.wikipedia.org/wiki/Linear_least_squares
+
+ex 2:\\
+- find the _whatever_ polinomials\\
+- do <f, p0>, <f, p1> ....
+
+
+finite diference - ie ex 3 with the derivatives:
+- https://en.wikipedia.org/wiki/Finite_difference_coefficient
+also
+- https://it.wikipedia.org/wiki/Metodo_delle_differenze_finite
+
+newton-cotes - ie ex 4 
+- https://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas
+- https://mathworld.wolfram.com/Newton-CotesFormulas.html
+
+that function $y$ from 3 and 4 is the one you got in ex 1
+
+
+- \(w_n(x) = (x-x_1)....(x-x_n) \) \\
+
+c11 pg 6 rest newton cotes (the thing with I_n\\
+if all I_n > 0 then it's iterable) \\
+also:\\
+https://en.wikiversity.org/wiki/Error_of_Analysis_of_Newton-Cotes_formulas
+
+gauss laguerre - p = e^-x\\
+https://en.wikipedia.org/wiki/Gauss%E2%80%93Laguerre_quadrature
+
+gauss legendre - interval = [-1, 1]\\
+https://en.wikipedia.org/wiki/Gauss%E2%80%93Legendre_quadrature\\
+https://mathworld.wolfram.com/Legendre-GaussQuadrature.html (see (9))\\
+http://www.theochem.ru.nl/~pwormer/Knowino/knowino.org/wiki/Legendre-Gauss_Quadrature_formula.html
+
+
+legendre poly defintion c8 - pg 8 bottom\\
+laguerre poly definition c9 - pg 7\\
+!laguerre uses weight p = e^(-x) - see c9 pg 8\\
+https://en.wikipedia.org/wiki/Gaussian_quadrature
+
+\(\int_0^\infty x^a e^{-x} dx = \Gamma(a+1) \), for a > -1
+
+legendre polynomials c8 - pg 6
