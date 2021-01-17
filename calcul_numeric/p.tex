@@ -1,0 +1,142 @@
+% Created 2021-01-17 So 23:28
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{minted}
+\usepackage{geometry}\geometry{a4paper,left=15mm,right=20mm,top=20mm,bottom=30mm}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.1 (Org mode 9.3)}, 
+ pdflang={English}}
+\begin{document}
+
+
+\section*{ex 1 - cele mai mici patrate}
+\label{sec:org0632c50}
+
+avem \(x_i\) si \(f(x_i)\) din tabel
+\medskip
+
+si avem  \(y_{a, b, c} (x)\) forma functiei pe care vrem sa o aproximam (de ex \(ax^2+bx+c\))
+\medskip
+
+definim functia: 
+\[ S(x, a, b, c) = \sum_i (f(x_i) - y_{a, b,c} (x_i))^2 \]
+
+si derivam in raport cu variabilele:\\
+(daca avem de ex \(a/x+b\) atunci derivam doar in raport cu \(a\) și \(b\)
+
+\medskip
+
+si obtinem un sistem
+\[
+\begin{cases}
+\dfrac{\partial S}{\partial a} = 0\\[1em]
+\dfrac{\partial S}{\partial b} = 0\\[1em]
+\dfrac{\partial S}{\partial c} = 0
+\end{cases}
+\]
+
+și tada: solutia sistemului da coeficientii functiei pe care o cauți
+
+\section*{ex 2 - aproximare in medie patratica:}
+\label{sec:orgd4fd3b3}
+se cere "aproximarea in medie patratica prin polinoame \(Q\)"\footnote{i know, wrong quotes} de grad cel mult \(n\) pe 
+\((a, b)\)\footnote{a, b pot fi infinit sau poate sa fie interval inchis} a functiei:
+
+\begin{itemize}
+\item cauti "Q polynomials" pe motorul de cautare preferat si gasesti ceva de genul asta:
+\end{itemize}
+\url{https://mathworld.wolfram.com/LegendrePolynomial.html}
+\begin{itemize}
+\item te uiti pe siteul ala sa vezi care-i ponderea - in engleza e "weight"
+\end{itemize}
+si se noteaza \(w(x)\), noi ramanem cu notatia profei si scriem \(p(x)\)
+\begin{itemize}
+\item si gasesti primele \(n\) polinoame: \(Q_i(x)\)
+\item calculezi produsul scalar cu functia ta:
+\end{itemize}
+\[ c_i = (f, P_i) = \int_a^b p(x) f(x) Q_i(x) dx \]
+\begin{itemize}
+\item si ai aproximarea:
+\end{itemize}
+\[ f(x) \approx P(x) = \sum_{i=1}^{n} c_i \cdot Q_i(x) \]
+cam ca la EDP, dar mai bine nu ne aducem aminte de asta acum
+
+\section*{ex 3 - derivare numerica}
+\label{sec:org5d1e300}
+calculati \(y^{(d)}(x_0)\) folosind o formula care foloseste toate elementele din multimea 
+\[A = \{y(x) | x \in \{x_i, |, i = 1..n \} \}\]
+\begin{itemize}
+\item spoiler, \(y\) e acelasi ca la ex1
+\item definim \(h_i = x_i - x_0\)
+\item si avem sistemul
+\end{itemize}
+ \begin{pmatrix}
+ h_1^0 &\cdots &h_n^0\\
+ \vdots& \ddots& \vdots\\
+ h_1^n  &\cdots& h_n^n
+ \end{pmatrix}
+\begin{pmatrix}
+ \alpha_1\\
+ \vdots\\
+ \alpha_n\\
+ \end{pmatrix}
+ = 
+ \begin{pmatrix}
+ 0\\
+ \vdots\\
+ d!\\
+ \vdots\\
+ \alpha_n\\
+ \end{pmatrix}
+
+in matricea din dreapta avem \(d!\) pe pozitia \(d+1\) (incepand numaratoarea de la 0)\\
+de ex daca avem de calculat \(y'\) atunci \(d=1\) si vine:
+\begin{pmatrix}
+0\\
+1!\\
+0\\
+\vdots\\
+0\\
+\end{pmatrix}
+
+\begin{itemize}
+\item rezolvam sistemul si avem valori pt \(\alpha_i\)
+\item si estimarea e:
+\end{itemize}
+\[ y^{(d)}(x_0) \approx \sum_{i=1}^n \alpha_i y(x_i) \]
+\begin{itemize}
+\item restul e:
+\end{itemize}
+\[R = -\frac{1}{n!} \sum_i \alpha_i \cdot  h_i ^ n \cdot  y^{(n)}(\xi_i)\]
+\begin{itemize}
+\item restul il putem majora cu:
+\end{itemize}
+\[|R| \leq \frac{1}{n!} \cdot \max\limits_\xi \left|y^{(n)}(\xi)\right| \cdot \sum_i \alpha_i \cdot  h_i ^ n\]
+
+\section*{ex 4:}
+\label{sec:org36e7059}
+\begin{itemize}
+\item spoiler, \(y\) e acelasi ca la ex1
+\end{itemize}
+un exemplu:
+\url{https://github.com/azbyn/math-made-short/blob/master/calcul\_numeric/gauss\_stuff/gauss\_stuff.pdf}
+\end{document}
