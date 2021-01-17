@@ -1,4 +1,4 @@
-% Created 2021-01-17 So 21:18
+% Created 2021-01-17 So 21:39
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -55,7 +55,10 @@ deci folosim:
 \includegraphics[width=\linewidth]{./a,b to -1,1.png}
 \end{center}
 
-formula e
+deci avem dupa schimbarea de variabila:
+\[ \int_a^b f(x) dx = \frac{b-a}{2} \int_{-1}^1 f(t) dt \]
+
+formula e (noi lucram cu \(\int_{-1}^1 f(t) dt\), nu \(\int_{-1}^1 f(x)\) dx)
 \begin{center}
 \includegraphics[width=.6\linewidth]{./formula.png}
 \end{center}
@@ -140,6 +143,9 @@ si acel \(p_n\) (cred că) e polinomul lagrange la care impartim prin coef lui \
 si acum ultima parte din problema:\\
 se poate itera daca \(w_i > 0\), \(\forall i = 1..n\)
 \medskip
+
+atentie, \(x_i\) urile sunt radacinile polinomului, astea nu se mai iau de la ex1\\
+ca iti si zice (sau mai degraba nu zice) "pe 3 noduri", nu "pe nodurile din A"
 
 sanity check:\\
 calculeaza integrala (cu wolfram alpha eventual) si verifica daca „seamană” cu ce ti-a dat
