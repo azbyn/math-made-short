@@ -1,0 +1,261 @@
+% Created 2021-01-21 Do 17:48
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{minted}
+\usepackage{geometry}\geometry{a4paper,left=15mm,right=20mm,top=20mm,bottom=30mm}
+\newcommand{\R}{\mathbb{R}}
+\usepackage{extarrows} \usepackage{mathtools} \usepackage[utf8]{inputenc}\usepackage[T2A]{fontenc}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.1 (Org mode 9.3)}, 
+ pdflang={English}}
+\begin{document}
+
+
+\section*{usefull}
+\label{sec:org5fe98a3}
+\begin{itemize}
+\item ineg cauchy-bunyakovski-schwarz
+\[
+| \langle u, v\rangle | \leq \| u\| \|v\|
+\]
+\item Weierstraß:\\
+continua pe compact \(\implies\) marginită și-și atinge marginile
+\item crit sylvester:
+\begin{itemize}
+\item daca minorii principali sunt pozitivi at mat e pozitiv semidefinita
+\item daca minorii principali sunt \(-, +, -,\cdots\) at mat e negativ semidefinita
+\end{itemize}
+\item fcț coercivă - "grows rapidly" -  \(\lim\limits_{\|x\|\to \infty} f(x) = \infty\)
+\begin{itemize}
+\item \(-\frac{1}{2} (x^2+y^2) \leq - xy\)
+\item see this \url{https://math.stackexchange.com/questions/1426897/}
+\end{itemize}
+\end{itemize}
+\section*{fct distanta:}
+\label{sec:org6027143}
+\begin{itemize}
+\item def \(d(A, x) = \inf\limits_{a\in A} \| a-x\|\)
+\item \(d(A, x) \iff x \in \overline{A}\)
+\item \(d_A(x) = d(A, x)\) lipschitz
+\item daca \(A\) închisă \(\exists\) \(a_x\)
+\item daca \(A\) închisă și convexa \(\implies\) \(a_x\) unic și caracterizat de  \(\langle x-a_x, u-a_x \rangle \leq 0,\quad \forall u \in A\)
+\end{itemize}
+
+\section*{multimi convexe}
+\label{sec:org9a76a83}
+\begin{itemize}
+\item def: \(\forall x, y \in C, [x,y] \subseteq C\)
+\item usually
+\end{itemize}
+\[ \text{conv} A = \left\{ \sum_{i=1}^{?} \alpha_i x_i \bigg| \sum \alpha_i = 1, \alpha_i > 0, x_i \in A \right\} \]
+\begin{itemize}
+\item Carathéodory:
+\end{itemize}
+\[ \mathbb{R}^p \supseteq \text{conv} A = \left\{ \sum_{i=1}^{p+1} \alpha_i x_i \bigg| \sum \alpha_i = 1, 
+\alpha_i > 0, x_i \in A \right\} \]
+\begin{itemize}
+\item Hermite-Hadamard - dacă \(f\) convex:
+\end{itemize}
+\[ f\left(\frac{a+b}{2}\right)\leq \frac{1}{b-a} \int_a^b f(x)dx \leq \frac{f(a)+f(b)}{2} \]
+\section*{fct convexe}
+\label{sec:orgf62eafb}
+\begin{itemize}
+\item def convexitate: \(f\) convexă pe \(D\) \(\iff\)
+\end{itemize}
+\[f(\lambda x + (1-\lambda)y) \leq \lambda f(x) + (1-\lambda) f(y), \forall x, y \in D,~\forall \lambda \in [0, 1]. \]
+\begin{itemize}
+\item ineg Jensen - good stuff
+\end{itemize}
+\[f\left(\sum \alpha_i x_i \right) \leq \sum \alpha_i f(x_i),~ \sum \alpha_i = 1, \alpha_i > 0, x_i \in A \]
+\begin{itemize}
+\item ineg pantelor - pg15
+\end{itemize}
+\[\frac{f(x_2) - f(x_1)}{x_2 - x_1} \leq 
+   \frac{f(x_3) - f(x_1)}{x_3 - x_1} \leq
+   \frac{f(x_3) - f(x_2)}{x_3 - x_2} \]
+\begin{itemize}
+\item strict convexa \(\iff f'\) strict crescatoare \(\iff f'' >0 \iff\) def cu \(\neq\)
+\item pt mai multe variabile e:
+\end{itemize}
+\[ \nabla^2 f(x) (y,y) > 0,\quad \forall x\in D,y\in \mathbb{R}^p \]
+\section*{conuri pg 24}
+\label{sec:orgd9f1f06}
+\begin{itemize}
+\item def: \(\forall k \in K, \lambda \ge 0,\quad  \lambda k \in K\)
+\item con convex: \(C+C=C\)
+\item înfăsurătoarea conică: \(\text{con }A = [0, \infty) A \coloneqq \{ \alpha a \mid \alpha>0, a\in A  \}\)
+\item polara \(S^- = \{ u \in \R^p \mid \langle u, x \rangle \leq 0, \forall x \in S \}\)
+\item con inchis și convex\(\implies\) \(C= (C^-)^-\)
+\end{itemize}
+
+\section*{vector tangent la o mulțime}
+\label{sec:orgae9ae11}
+\begin{itemize}
+\item def: \(u \in \R^p\) tg la \(M\) în \(\bar{x} \in \text{cl }M  \iff \exists (t_n) \xlongrightarrow{>0} 0,\) și
+\(u_n\to u\) aî \(\forall n\)
+\end{itemize}
+\[\bar{x} + t_n u_n \in M \]
+\begin{itemize}
+\item conul tangent (închis): \(T_M(\bar{x})\)
+\item conul normal: \(N_M(\bar{x}) := \left(T_M(\bar{x}) \right)^-\)
+\end{itemize}
+\section*{lema Farkas - pg 28}
+\label{sec:org86d44f9}
+\begin{itemize}
+\item avem \(n \in \mathbb{N}\) fixat
+\item fie \((\varphi_i)_i \subset L(\R^p, \R)\) și \(\varphi \in L(\R^p, \R)\) at:
+
+ \[\Big([\varphi_i(x) \leq 0 ] \implies \varphi(x) = 0\Big) \iff \exists (\alpha_i)\geq 0 
+\text{ aî } \varphi = \sum_i \alpha_i \varphi_i \]
+\item corolar: fie \((a_i)_i \subset \R^p\) și \(a \in \R^p\) at:
+\[ \Big( \forall x \in \R^p :  [\langle a_i, x \rangle \leq 0 ] \implies \langle a, x \rangle = 0\Big) \iff 
+\exists (\alpha_i)\geq 0 \text{ aî } a = \sum_i \alpha_i a_i \]
+\end{itemize}
+\section*{acutual minimization problems:}
+\label{sec:org8d37a08}
+\begin{itemize}
+\item Weierstraß - pg 38: continua pe compact \(\implies\) pb minimizarii si a maximizarii au sol globale
+\item Condiția necesara de ordinul I:
+\(\bar{x}\) sol locala și \(f\) diferentiabilă at \(\nabla f(\bar{x})(u) \geq 0 \forall, ~
+   u \in T_M(\bar{x})\)
+\item Condiția necesara de ordinul II (\(D\) deschisă):\\
+\(\bar{x}\) min local și \(f\) diferentiabilă at \(\nabla f(\bar{x})) = 0\) și 
+ \(\nabla^2 f(\bar{x}))\) pozitiv semidefinită
+\item pt fct convexe min local \(\iff\) min global \(\iff\) pct critic (\(\nabla f(\bar{x})) = 0\) )
+\end{itemize}
+
+\section*{Karush-Kuhn-Tucker}
+\label{sec:org1ef6339}
+\begin{itemize}
+\item pct fezabile:
+\[ M := \left\{ x \in U \mid g(x) \leq 0, h(x) = 0 \right\} \]
+\item indici restrictii active:
+\[ A(\bar{x}) = \left\{ i \in 1..n \mid g_i (\bar{x}) = 0  \right\} \]
+\item other stuff:
+  \[ G (\bar{x}) = \left\{
+\sum_{i \in A(\bar{x})} \lambda_i \nabla g_i(\bar{x}) + \sum_{j =1}^{m} \mu_j \nabla h_j (\bar{x}) \mid 
+ \lambda_i \ge 0, \mu_j \in \R
+ \right\} = D(\bar{x})^- \]
+  \[
+  D(\bar{x}) = \left\{ u \in \R^p ~ \Big |~ \begin{matrix} 
+  \nabla g_i(\bar{x})(u) \leq 0, \forall i \in A(\bar{x}) \\
+  \nabla h_j(\bar{x})(u) = 0, \forall j \in 1..m
+\end{matrix}
+\right\}
+  \]
+ - thing: \( T_M(\bar{x}) \subseteq D(\bar{x}) \)
+\item lagrangianul:
+\[
+L(x, (\lambda, \mu)) := f(x) + \sum_{i=1}^n \lambda_i g_i(x) + \sum_{j=1}^m \mu_j h_j(x)
+\]
+\(\bar{x}\)  sol problemei \(\implies \exists \lambda_i \geq 0, \mu\) aî \(\nabla_x L(\bar{x}, (\lambda, \mu)) = 0\) și
+ \(\lambda_i g_i(\bar{x}) = 0\)
+\end{itemize}
+
+\section*{mafs:}
+\label{sec:org5b5f8fd}
+\subsection*{pct min/max global/local}
+\label{sec:org723f5e2}
+\begin{enumerate}
+\item cautam pct stationare \(\nabla f = 0\)
+\item calculam \(\nabla^2 f\) în pct stationare
+\item daca nu mer'e verificăm semnul lui \(f(x, y) - f(x_A, y_A)\) și gasim niște șiruri > 0 și < 0
+\end{enumerate}
+\subsection*{min/max cu restricții}
+\label{sec:org24c545d}
+\begin{enumerate}
+\item existenta solutiilor:  \(M = \left\{x \mid h(x) = 0, g(x) \leq 0 \right \}\)
+\begin{itemize}
+\item dacă M compact (închisă, mărginită) \(\xLongrightarrow{\text{Weierstraß}} \exists\) sol
+\item dacă M nemărginită, ne gândim dacă \(f\) coercivă \(\Big( \lim\limits_{\|x\|\to \infty} f(x) = \infty \Big)\)\\
+\(f\) coercivă \(\implies \exists\) sol
+\end{itemize}
+\item verificare cond de calificare pt pct fezabil \(\bar{x}\):\\
+Guignard: \(T_M(\bar{x})^- = D(\bar{x})^- \)\\
+\(~\quad \Uparrow\)
+
+cvasiregularitate: \(T_M(\bar{x}) = D(\bar{x}) \)\\
+\(~\quad \Uparrow\)
+
+liniară independență: mulțimea \(
+\{ \nabla g_i (\bar{x}) \mid i \in A(\bar{x}) \} \cup
+\{ \nabla h_j (\bar{x}) \mid j \in i..m \} \) l.i. \\
+\(~\quad \Uparrow\)
+
+Mangasarian-Fromovitz: \( \{ \nabla h_j (\bar{x}) \mid j \in i..m \} \) l.i. și 
+\(\exists u \in \R^p \) aî
+\[\nabla h_j (\bar{x})(u) > 0 \text{ și } \nabla g_i(\bar{x})(u) < 0,\quad \forall i \in A(\bar{x}) \]
+
+ \(g_i, h_j\) afine - конец
+ \medskip
+
+ Slater: \( h\) afină, \(f, g_i\) convexe și 
+\(\exists u \in \R^p \) aî
+\[ h(u) = 0 \text{ și } g_i(u) < 0, \quad \forall i \in 1..n \]
+\item conditii K-K-T:\\
+rezolvam sistemul:
+\[
+\begin{dcases}
+\nabla f(x) + \sum_{i=1}^n \lambda_i \nabla  g_i(x) + \sum_{j=1}^m \mu_j \nabla  h_j(x) = 0,\\
+h(u) = 0,\\
+\lambda_i g_i(\bar{x}) = 0, \quad \forall i \in 1..n,\\
+\lambda_i \geq 0.
+\end{dcases}
+\]
+\end{enumerate}
+
+\section*{algoritmi}
+\label{sec:orge94672a}
+\begin{itemize}
+\item \(f\) contracție \(\iff\)  \(|f'(x)| < \lambda,\quad \lambda \in (0, 1)\) \(\iff\)
+\(\| f(x) - f(y) \| \leq \lambda \| x - y\|, \quad \lambda \in (0, 1)\)
+\item \(f\) contracție \(\implies f\) cont
+\item approximari cu th Banach:
+\begin{itemize}
+\item \(| x_n - \bar{x}| \leq | x_1 - x_0 | \dfrac{\lambda^n}{1-\lambda}\)
+\item \(| x_n - \bar{x}| \leq | x_n - x_{n-1} | \dfrac{\lambda}{1-\lambda}\)
+\item \(| x_n - x_{n+1}| \leq \lambda^n | x_1 - x_0 |\)
+\end{itemize}
+\item iter picard: \(x_{n+1} = f(x_n)\)
+\item Banach: contractie are pct fix unic care-i lim \(\forall\) iteratii Picard
+\item banach convergent - pg 34
+\end{itemize}
+\section*{viteza convergenta:}
+\label{sec:org9c47415}
+\begin{itemize}
+\item ordinul de convergență: \(q\) cel mai mare pt care 
+  \[
+\lim\limits_{k\to \infty} \frac{\|x_{n+1} - \bar{x}\|}{\|x_{n} - \bar{x}\|^q} < \infty
+  \]
+\item \(q=1\) - conv liniara
+\item \(q=2\) - conv patratica
+\end{itemize}
+\section*{met newton}
+\label{sec:orga69652e}
+\begin{itemize}
+\item mer'e daca \(f \in C^2\) și toate iteratiile au \(f'(x_k) \ne 0\)
+\item iteratie newton:
+\[ x_{k+1} = x_k - \frac{f(x_k)}{f'(x_k)} \]
+\item converge la zerourile fct
+\item to solve linear equation we apply that to \(\nabla L(x, (\lambda, \mu))\)
+\end{itemize}
+\end{document}
