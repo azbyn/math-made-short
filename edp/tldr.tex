@@ -1,0 +1,286 @@
+% Created 2021-01-25 Mo 14:46
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{minted}
+\usepackage{geometry}\geometry{a4paper,left=15mm,right=20mm,top=20mm,bottom=30mm}
+\newcommand{\R}{\mathbb{R}} \newcommand{\C}{\mathbb{C}}
+\usepackage{extarrows} \usepackage{mathtools} \usepackage[utf8]{inputenc}\usepackage[T2A]{fontenc}
+\renewcommand{\phi}{\varphi} \newcommand{\parti}[2]{\frac{\partial #1}{\partial #2}}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.1 (Org mode 9.3)}, 
+ pdflang={English}}
+\begin{document}
+
+
+\section*{might be useful}
+\label{sec:org6671fb4}
+\[ \frac{d}{dx} \left (\int_{0}^{x} f(x,y)\,dy \right) = f\big(x,x) + \int_{0}^{x}\frac{\partial}{\partial x} f(x,y) \,dy\]
+
+\medskip
+
+care e obtinuta din formula Leibniz:
+\[ \frac{d}{dx} \left (\int_{a(x)}^{b(x)}f(x,t)\,dt \right) = f\big(x,b(x)\big)\cdot \frac{d}{dx} b(x) - f\big(x,a(x)\big)\cdot \frac{d}{dx} a(x) + \int_{a(x)}^{b(x)}\frac{\partial}{\partial x} f(x,t) \,dt\]
+\begin{itemize}
+\item laplace operator (laplacian): \(\Delta = \nabla^2 = \nabla \cdot \nabla = \displaystyle \sum_i \dfrac{\partial^2}{\partial x_i^2}\)
+\item field therory shit: (curl=rotor)\\
+\(\operatorname{div}  \, \operatorname{grad} f          \equiv \nabla \cdot  \nabla f \equiv \nabla^2 f\)\\
+\(\operatorname{curl} \, \operatorname{grad} f          \equiv \nabla \times \nabla f = \mathbf 0\)\\
+\(\operatorname{div}  \, \operatorname{curl} \mathbf{A} \equiv \nabla \cdot  (\nabla \times \mathbf{A}) = 0\)\\
+\(\operatorname{curl} \, \operatorname{curl} \mathbf{A} \equiv \nabla \times (\nabla \times \mathbf{A}) = \nabla (\nabla \cdot \mathbf{A}) - \nabla^2 \mathbf{A}\)\\
+\(\nabla^2 (f g) = f \nabla^2 g + 2 \nabla f \cdot \nabla g + g \nabla^2 f\)
+\item Gauß-Остроградский:
+\[ \int_\Omega \parti{u}{x_i} = \int_{\partial \Omega}u \cdot \nu_i d \sigma \]
+also:
+\end{itemize}
+\[ \int_\Omega \operatorname{div} F (x) dx = \int_{\partial \Omega} F  \cdot \nu d \sigma \]
+\begin{itemize}
+\item Green formula:
+\end{itemize}
+\[\int_\Omega (\nabla u \cdot \nabla v  + v \Delta u) dx = \int_{\partial \Omega} v \sum_i \parti{u}{x_i} \nu_i d \sigma \]
+\begin{itemize}
+\item Green formula 1:
+\end{itemize}
+\[ -\int_\Omega \Delta u v dx = \int_\Omega \nabla u \cdot \nabla v dx - \int_{\partial \Omega} \parti{u}{\nu} v  d \sigma \]
+\begin{itemize}
+\item Green formula 2:
+\end{itemize}
+\[ \int_\Omega (\Delta u v u\Delta v) dx = \int_{\partial \Omega} \parti{u}{\nu} v - u \parti{v}{\nu}  d \sigma \]
+\begin{itemize}
+\item convoluție:
+\[ f*g (x) = \int_{\R^d} f(x-y) g(y)dy \]
+\end{itemize}
+\section*{misc}
+\label{sec:orga9ef1c7}
+\begin{itemize}
+\item proiectie pe subspatii inchise:
+\end{itemize}
+\[ \exists ! Pu \in V  \text{ aî } \| P u - u \|  = \inf_{v \in V} \| v - u \| \]
+\begin{itemize}
+\item în plus \((u-Pu)\perp V\) (ie \(\langle u-Pu, v \rangle = 0,~ \forall v \in V\))
+\end{itemize}
+\begin{itemize}
+\item bessel inequality: \(V = \operatorname{span} \{ v_1,\ldots, v_n \}\)
+\[ \| u\|^2 \geq \|P_V u\|^2 = \sum_{j=1}^n \frac{|\langle u, v_j\rangle|^2}{\|v_j\|^2} \]
+\item daca are loc ineg parseval și \(\{f_j\}\) ortongolală, at e bază Hilbertiană
+\item scalar product with functions \(f: [a,b] \to \mathbb{C} \in L^2([a, b])\):
+\[ \langle f, g\rangle = \int_a^b f(x) \overline{g(x)} dx  \]
+\item weak convergence:
+\[ u^n \rightharpoonup u \text{ dacă} \langle u^n-u, v\rangle \to 0, \forall v \in H \]
+\item subarmonica?
+\end{itemize}
+
+
+\section*{Sturm-Liouville - S1}
+\label{sec:org5c22f53}
+\subsection*{valori proprii}
+\label{sec:org9ed58b0}
+\begin{itemize}
+\item c3 - pg 5
+\item Melnig thing pg 7
+
+\item do the \(|\cdot \varphi, \int\) to get \(\lambda \geq 0\)
+\item if \(\varphi = 0\) we ignore that one. we dont want null solutions
+\end{itemize}
+
+\begin{itemize}
+ \item we get the characteristic 
+ equation\footnote{\url{https://en.wikipedia.org/wiki/Characteristic_equation_(calculus)}} (polinom caracteristic:
+  \[ \varphi''(x) + \lambda \varphi(x) =0  \text{ becomes } r^2 + \lambda\cdot 1 = 0 \]  
+\end{itemize}
+\begin{itemize}
+\item and we get the functions of form (may differ depending on the characteristic equation):
+\[\left \{ e^{r_i}, \ldots, x^m e^{r_i} \right\} \] 
+or, for our example:
+\[ \sin(\sqrt{\lambda} x), \cos(\sqrt{\lambda} x) \] 
+so 
+\[\varphi(x) = \alpha \sin(\sqrt{\lambda} x) + \beta \cos(\sqrt{\lambda} x) \]
+\item with the initial conditions: \(\varphi(0) = \varphi(l) = 0\)
+we get some restrictions for \(\alpha\) and \(\beta\)
+\end{itemize}
+and, tada, ya get some \(\lambda_k, \varphi_k\)
+
+\section*{Green's function:}
+\label{sec:org9562b0a}
+\begin{itemize}
+\item for n-th order differential equations:
+see green-kurzgesagt
+\end{itemize}
+\section*{separation of variables}
+\label{sec:org1bdd9f0}
+\begin{itemize}
+\item see s6 - pg 2
+\item we have:
+\end{itemize}
+\[
+\begin{cases}
+-\Delta u = f,\quad \text{în }\Omega = (a, b) \times (c, d)\\
+\text{some condition like } u = 0,\quad \text{pe }\partial\Omega
+\end{cases}
+\]
+\begin{itemize}
+\item we write stuff with respect to \(x\):
+\end{itemize}
+\[
+\begin{cases}
+- \phi'' = \lambda \phi,\quad \text{în }\Omega = (a, b)\\
+\text{some condition like } u(a) = u(b) = 0
+\end{cases}
+\]
+\begin{itemize}
+\item and we get some eigen functions and values: 
+\(\{\phi_k\}, \(\{\lambda_k\}\)
+\item we write things with the new functions:
+\[ u(x, y) = \sum^\infty_k u_k(y) \phi_k(x) \]
+\[ u_{xx} = ..., u_{yy} = ...\]
+\[ f(x, y) = \sum f_k(y) \phi_k(x) = \sum\left( \int_a^b f(t, y) \phi_k(t) dt \right) \phi_k(x)\]
+\end{itemize}
+\begin{itemize}
+\item then we solve it for some \(k\)
+\[
+\begin{cases}
+-\Delta u_k(y) = f_k(y),\quad \text{în }(a, b)\\
+\text{some condition like } u(a) = u(b) = 0
+\end{cases}
+\]
+and we get
+\[ u_k(y) = \int_a^b G_k(y, s) f_k(s) ds \]
+\item sum things together and we get a \(G \big((x, y), (t, s)\big)\)
+\end{itemize}
+
+TODO test this
+
+
+\section*{toc}
+\label{sec:orgd8b01b4}
+\subsection*{course}
+\label{sec:org2209394}
+\begin{itemize}
+\item C1: basic shit
+\item C2: 
+\begin{itemize}
+\item basic shit (prod scalar and norm)
+\item projections
+\item besel inequality
+\end{itemize}
+\item C3:
+\begin{itemize}
+\item more besel
+\item hilbert basis
+\item problem with Green's function
+\item hilbert spaces examples
+\end{itemize}
+\item C4:
+\begin{itemize}
+\item proprietati Green's thing - pg 2
+\item Riesz  representation theorem - pg 5 (dual stuff)
+\item autoadjunct daca \(T = T^*\)
+\end{itemize}
+\item C5:
+\begin{itemize}
+\item weak convergence
+\item hilbert basis proprierties \& stuff
+\end{itemize}
+\item C6: 
+\begin{itemize}
+\item more weird abstract shit
+\item sturm liouville in general form - pg 11
+\end{itemize}
+\item C7:
+\begin{itemize}
+\item differential subvariety stuff
+\item green's formulas
+\item convolutions
+\item that weird \(E\)lementary thing
+\end{itemize}
+\end{itemize}
+\subsection*{seminaries}
+\label{sec:org6900a23}
+\subsubsection*{S1}
+\label{sec:orga975c03}
+\begin{itemize}
+\item tl;dr normal differential equations
+\end{itemize}
+\[
+\begin{cases}
+u'_k(t) + \lambda_k u_k(t) = f_k(t), t>0\\
+u_k(0) = u_k^0
+\end{cases}
+\]\[
+u_k(t) = e^{-\lambda_kt} u_k^0 + \int_0^t \exp(-\lambda_k(t-s)) f_k(s)ds
+\]
+\begin{itemize}
+\item sturm-liouville stuff
+\end{itemize}
+\subsubsection*{S2, s3}
+\label{sec:org3efb36f}
+\begin{itemize}
+\item sturm-liouville and fourier exercises
+\end{itemize}
+\subsubsection*{s4:?}
+\label{sec:orge757ba8}
+\begin{itemize}
+\item met sep variabilelor pg 4
+\item fundamental solution pg 10
+\end{itemize}
+\subsubsection*{s5}
+\label{sec:orgc82e89d}
+\begin{itemize}
+\item green shit
+\end{itemize}
+\subsubsection*{s6}
+\label{sec:org28bba68}
+\begin{itemize}
+\item separation of variabiles for sturm-liouvile problems + green - pg 3
+\end{itemize}
+\subsection*{that old book}
+\label{sec:org6d34e2c}
+\begin{itemize}
+\item green - pg 39
+\end{itemize}
+\subsection*{melnig thing}
+\label{sec:orgc1a7f8b}
+\begin{itemize}
+\item 7 - val proprii
+\item 15 - parseval stuff
+\end{itemize}
+
+\section*{things to know}
+\label{sec:org3c531bc}
+\begin{itemize}
+\item sp Hilbert, serii Fourier, pb Sturm-Liouville
+\item separarea variabilelor (pb val proprii, hip, parab, eliptice - serii fourier
+\item fct Green (op laplace+ sturm liouville)
+\item pp maxim (op eliptici + aplicatii - unicitatea sol si estimari)
+\item formularea variationala a pb eliptice (si parab si hip) => sep variabilelor
+\item transformata fourier - calcul + cateva proprietati
+
+\item oral: he asks bout some theory bit
+\end{itemize}
+
+\section*{todo:}
+\label{sec:org49d2146}
+\begin{itemize}
+\item do some fourier shit
+\item "sep variabilelor"?
+\item green shit for liouville and
+\end{itemize}
+\end{document}
