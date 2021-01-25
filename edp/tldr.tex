@@ -1,4 +1,4 @@
-% Created 2021-01-25 Mo 14:46
+% Created 2021-01-25 Mo 18:35
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -32,7 +32,7 @@
 
 
 \section*{might be useful}
-\label{sec:org6671fb4}
+\label{sec:org9414177}
 \[ \frac{d}{dx} \left (\int_{0}^{x} f(x,y)\,dy \right) = f\big(x,x) + \int_{0}^{x}\frac{\partial}{\partial x} f(x,y) \,dy\]
 
 \medskip
@@ -67,9 +67,11 @@ also:
 \begin{itemize}
 \item convoluție:
 \[ f*g (x) = \int_{\R^d} f(x-y) g(y)dy \]
+\item REMEMBER THE NORM FOR THE FOURIER THING:
+\[ u(x) = \sum_k \frac{1}{\|\phi_k\|^2} \int_a^b u(x) \phi_k(x) dx \]
 \end{itemize}
 \section*{misc}
-\label{sec:orga9ef1c7}
+\label{sec:org384d1a5}
 \begin{itemize}
 \item proiectie pe subspatii inchise:
 \end{itemize}
@@ -90,9 +92,9 @@ also:
 
 
 \section*{Sturm-Liouville - S1}
-\label{sec:org5c22f53}
+\label{sec:orgd730ac2}
 \subsection*{valori proprii}
-\label{sec:org9ed58b0}
+\label{sec:org3695199}
 \begin{itemize}
 \item c3 - pg 5
 \item Melnig thing pg 7
@@ -119,13 +121,13 @@ we get some restrictions for \(\alpha\) and \(\beta\)
 and, tada, ya get some \(\lambda_k, \varphi_k\)
 
 \section*{Green's function:}
-\label{sec:org9562b0a}
+\label{sec:org9da1659}
 \begin{itemize}
 \item for n-th order differential equations:
 see green-kurzgesagt
 \end{itemize}
 \section*{separation of variables}
-\label{sec:org1bdd9f0}
+\label{sec:org010c396}
 \begin{itemize}
 \item see s6 - pg 2
 \item we have:
@@ -151,28 +153,30 @@ see green-kurzgesagt
 \item we write things with the new functions:
 \[ u(x, y) = \sum^\infty_k u_k(y) \phi_k(x) \]
 \[ u_{xx} = ..., u_{yy} = ...\]
-\[ f(x, y) = \sum f_k(y) \phi_k(x) = \sum\left( \int_a^b f(t, y) \phi_k(t) dt \right) \phi_k(x)\]
+\[ f(x, y) = \sum f_k(y) \phi_k(x) = \sum \frac{1}{\| \phi_k\|^2} \left( \int_a^b f(t, y) \phi_k(t) dt \right) \phi_k(x)\]
 \end{itemize}
 \begin{itemize}
 \item then we solve it for some \(k\)
 \[
 \begin{cases}
--\Delta u_k(y) = f_k(y),\quad \text{în }(a, b)\\
-\text{some condition like } u(a) = u(b) = 0
+-\Delta u_k(y) = f_k(y),\quad \text{în }(c, d)\\
+\text{some condition like } u(c) = u(d) = 0
 \end{cases}
 \]
 and we get
-\[ u_k(y) = \int_a^b G_k(y, s) f_k(s) ds \]
-\item sum things together and we get a \(G \big((x, y), (t, s)\big)\)
+\[ u_k(y) = \int_c^d G_k(y, s) f_k(s) ds \]
+\item sum things together and we get a \(G \big((x, y), (t, s)\big)\):
+ \[ u(x, y) = \int_c^d \sum_k G_k(y, s) \frac{1}{\| \phi_k\|^2} \left( \int_a^b f(t, y) \phi_k(t) \, dt \right) \phi_k(x)\, ds \]
+aka
 \end{itemize}
-
-TODO test this
-
+\[ u(x, y) = \int_c^d \int_a^b \left(\sum_k G_k(y, s) \frac{1}{\| \phi_k\|^2}  \phi_k(t) \phi_k(x) \right) f(t, s) \, dt \, ds \]
+  and, tada
+  \[G \big((x, y), (t, s)\big) = \sum_{k=1}^\infty G_k(y, s) \frac{1}{\| \phi_k\|^2}  \phi_k(t) \phi_k(x) \]
 
 \section*{toc}
-\label{sec:orgd8b01b4}
+\label{sec:orga91425d}
 \subsection*{course}
-\label{sec:org2209394}
+\label{sec:org80ee27f}
 \begin{itemize}
 \item C1: basic shit
 \item C2: 
@@ -213,9 +217,9 @@ TODO test this
 \end{itemize}
 \end{itemize}
 \subsection*{seminaries}
-\label{sec:org6900a23}
+\label{sec:org2fdd982}
 \subsubsection*{S1}
-\label{sec:orga975c03}
+\label{sec:org9362f93}
 \begin{itemize}
 \item tl;dr normal differential equations
 \end{itemize}
@@ -231,40 +235,40 @@ u_k(t) = e^{-\lambda_kt} u_k^0 + \int_0^t \exp(-\lambda_k(t-s)) f_k(s)ds
 \item sturm-liouville stuff
 \end{itemize}
 \subsubsection*{S2, s3}
-\label{sec:org3efb36f}
+\label{sec:org2f59ef9}
 \begin{itemize}
 \item sturm-liouville and fourier exercises
 \end{itemize}
 \subsubsection*{s4:?}
-\label{sec:orge757ba8}
+\label{sec:orgbe45268}
 \begin{itemize}
 \item met sep variabilelor pg 4
 \item fundamental solution pg 10
 \end{itemize}
 \subsubsection*{s5}
-\label{sec:orgc82e89d}
+\label{sec:orgf8d752d}
 \begin{itemize}
 \item green shit
 \end{itemize}
 \subsubsection*{s6}
-\label{sec:org28bba68}
+\label{sec:org1d82894}
 \begin{itemize}
 \item separation of variabiles for sturm-liouvile problems + green - pg 3
 \end{itemize}
 \subsection*{that old book}
-\label{sec:org6d34e2c}
+\label{sec:org581fe33}
 \begin{itemize}
 \item green - pg 39
 \end{itemize}
 \subsection*{melnig thing}
-\label{sec:orgc1a7f8b}
+\label{sec:orgee24afa}
 \begin{itemize}
 \item 7 - val proprii
 \item 15 - parseval stuff
 \end{itemize}
 
 \section*{things to know}
-\label{sec:org3c531bc}
+\label{sec:org8196d77}
 \begin{itemize}
 \item sp Hilbert, serii Fourier, pb Sturm-Liouville
 \item separarea variabilelor (pb val proprii, hip, parab, eliptice - serii fourier
@@ -277,7 +281,7 @@ u_k(t) = e^{-\lambda_kt} u_k^0 + \int_0^t \exp(-\lambda_k(t-s)) f_k(s)ds
 \end{itemize}
 
 \section*{todo:}
-\label{sec:org49d2146}
+\label{sec:org3849891}
 \begin{itemize}
 \item do some fourier shit
 \item "sep variabilelor"?

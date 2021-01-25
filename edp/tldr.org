@@ -34,6 +34,8 @@
  \[ \int_\Omega (\Delta u v u\Delta v) dx = \int_{\partial \Omega} \parti{u}{\nu} v - u \parti{v}{\nu}  d \sigma \]
  - convoluție:
   \[ f*g (x) = \int_{\R^d} f(x-y) g(y)dy \]
+ - REMEMBER THE NORM FOR THE FOURIER THING:
+   \[ u(x) = \sum_k \frac{1}{\|\phi_k\|^2} \int_a^b u(x) \phi_k(x) dx \]
 * misc
  - proiectie pe subspatii inchise:
  \[ \exists ! Pu \in V  \text{ aî } \| P u - u \|  = \inf_{v \in V} \| v - u \| \]
@@ -101,22 +103,24 @@
   - we write things with the new functions:
     \[ u(x, y) = \sum^\infty_k u_k(y) \phi_k(x) \]
     \[ u_{xx} = ..., u_{yy} = ...\]
-    \[ f(x, y) = \sum f_k(y) \phi_k(x) = \sum\left( \int_a^b f(t, y) \phi_k(t) dt \right) \phi_k(x)\]
+    \[ f(x, y) = \sum f_k(y) \phi_k(x) = \sum \frac{1}{\| \phi_k\|^2} \left( \int_a^b f(t, y) \phi_k(t) dt \right) \phi_k(x)\]
  - then we solve it for some \(k\)
     #+begin_export latex
     \[
     \begin{cases}
-    -\Delta u_k(y) = f_k(y),\quad \text{în }(a, b)\\
-    \text{some condition like } u(a) = u(b) = 0
+    -\Delta u_k(y) = f_k(y),\quad \text{în }(c, d)\\
+    \text{some condition like } u(c) = u(d) = 0
     \end{cases}
     \]
     #+end_export
   and we get
-  \[ u_k(y) = \int_a^b G_k(y, s) f_k(s) ds \]
- - sum things together and we get a \(G \big((x, y), (t, s)\big) \)
-
- TODO test this
-
+  \[ u_k(y) = \int_c^d G_k(y, s) f_k(s) ds \]
+ - sum things together and we get a \(G \big((x, y), (t, s)\big) \):
+   \[ u(x, y) = \int_c^d \sum_k G_k(y, s) \frac{1}{\| \phi_k\|^2} \left( \int_a^b f(t, y) \phi_k(t) \, dt \right) \phi_k(x)\, ds \]
+  aka
+\[ u(x, y) = \int_c^d \int_a^b \left(\sum_k G_k(y, s) \frac{1}{\| \phi_k\|^2}  \phi_k(t) \phi_k(x) \right) f(t, s) \, dt \, ds \]
+  and, tada
+  \[G \big((x, y), (t, s)\big) = \sum_{k=1}^\infty G_k(y, s) \frac{1}{\| \phi_k\|^2}  \phi_k(t) \phi_k(x) \]
 
 * toc
 ** course
