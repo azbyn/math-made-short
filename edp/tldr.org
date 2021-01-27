@@ -5,6 +5,7 @@
 #+LATEX_HEADER: \usepackage{extarrows} \usepackage{mathtools} \usepackage[utf8]{inputenc}\usepackage[T2A]{fontenc}
 #+LATEX_HEADER: \renewcommand{\phi}{\varphi} \newcommand{\parti}[2]{\frac{\partial #1}{\partial #2}}
 
+
 * might be useful
   #+begin_export latex  
   \[ \frac{d}{dx} \left (\int_{0}^{x} f(x,y)\,dy \right) = f\big(x,x) + \int_{0}^{x}\frac{\partial}{\partial x} f(x,y) \,dy\]
@@ -36,6 +37,8 @@
   \[ f*g (x) = \int_{\R^d} f(x-y) g(y)dy \]
  - REMEMBER THE NORM FOR THE FOURIER THING:
    \[ u(x) = \sum_k \frac{1}{\|\phi_k\|^2} \int_a^b u(x) \phi_k(x) dx \]
+ - fourier desmos: https://www.desmos.com/calculator/xkc2e0emnm
+
  - Ec dif ordin I
  \[x' = a(t)x + b(t) \quad \quad x = e^{\int a(t)dt} \left( C + \int e^{-\int a(t) dt} b(t) dt \right)\]
 ** coś, sin stuff:
@@ -127,7 +130,7 @@
   \]
   #+end_export
   - and we get some eigen functions and values: 
-   \(\{\phi_k\}, \(\{\lambda_k\}\)
+   \(\{\phi_k\}\), \(\{\lambda_k\}\)
   - we write things with the new functions:
     \[ u(x, y) = \sum^\infty_k u_k(y) \phi_k(x) \]
     \[ u_{xx} = ..., u_{yy} = ...\]
@@ -382,6 +385,7 @@ Principiul de maxim: page 103
 
 Formularea variationala pt elipsa: page 115, also s13-14 first pages
 
+*** ex 5: page 115
 *** Ex 6: transformata fourier: check s14, page 13
 
 * things to know
