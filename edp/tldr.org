@@ -36,6 +36,28 @@
   \[ f*g (x) = \int_{\R^d} f(x-y) g(y)dy \]
  - REMEMBER THE NORM FOR THE FOURIER THING:
    \[ u(x) = \sum_k \frac{1}{\|\phi_k\|^2} \int_a^b u(x) \phi_k(x) dx \]
+** coś, sin stuff:
+  - \(e^{ix} = \cos x + i \sin x\)
+  - \(\sin x = \dfrac{e^{ix}-e^{-ix}}{2i}\)
+  - \( \cos x = \dfrac{e^{ix}+e^{-ix}}{2}\)
+*** product to sum
+   - \( 2\cos \theta \cos \varphi = {{\cos(\theta - \varphi) + \cos(\theta + \varphi)}}\)
+   - \(2\sin \theta \sin \varphi = {{\cos(\theta - \varphi) - \cos(\theta + \varphi)} }\)
+   - \(2\sin \theta \cos \varphi = {{\sin(\theta + \varphi) + \sin(\theta - \varphi)} }\)
+   - \(2\cos \theta \sin \varphi = {{\sin(\theta + \varphi) - \sin(\theta - \varphi)} }\)
+   - \(\cos^2 \varphi = \frac{1+\cos(2\varphi)}{2} \)
+   - \(\sin^2 \varphi = \frac{1-\cos(2\varphi)}{2} \)
+
+*** sum to product
+ - \(\sin \theta \pm \sin \varphi = 2 \sin\left( \dfrac{\theta \pm \varphi}{2} \right) \cos\left( \dfrac{\theta \mp \varphi}{2} \right)\)
+ - \(\cos \theta + \cos \varphi = 2 \cos\left( \dfrac{\theta + \varphi} {2} \right) \cos\left( \dfrac{\theta - \varphi}{2} \right)\)
+ - \(\cos \theta - \cos \varphi = -2\sin\left( \dfrac{\theta + \varphi}{2}\right) \sin\left(\dfrac{\theta - \varphi}{2}\right)\)
+
+
+* conditions
+ - dirichlet: \(u(x) = f(x)\) pe \(\partial \Omega\)
+ - newman: \(\parti{u}{\nu}(x) = f(x)\) pe \(\partial \Omega\)
+ - robin: \(\parti{u}{\nu}(x) +u(x) = f(x)\) pe \(\partial \Omega\)
 * misc
  - proiectie pe subspatii inchise:
  \[ \exists ! Pu \in V  \text{ aî } \| P u - u \|  = \inf_{v \in V} \| v - u \| \]
@@ -44,11 +66,9 @@
    \[ \| u\|^2 \geq \|P_V u\|^2 = \sum_{j=1}^n \frac{|\langle u, v_j\rangle|^2}{\|v_j\|^2} \]
  - daca are loc ineg parseval și \(\{f_j\}\) ortongolală, at e bază Hilbertiană
  - scalar product with functions \( f: [a,b] \to \mathbb{C} \in L^2([a, b]) \):
-   \[ \langle f, g\rangle = \int_a^b f(x) \overline{g(x)} dx  \]
  - weak convergence:
+   \[ \langle f, g\rangle = \int_a^b f(x) \overline{g(x)} dx  \]
    \[ u^n \rightharpoonup u \text{ dacă} \langle u^n-u, v\rangle \to 0, \forall v \in H \]
- - subarmonica?
-
 
 * Sturm-Liouville - S1
 ** valori proprii
@@ -122,6 +142,105 @@
   and, tada
   \[G \big((x, y), (t, s)\big) = \sum_{k=1}^\infty G_k(y, s) \frac{1}{\| \phi_k\|^2}  \phi_k(t) \phi_k(x) \]
 
+** eigen values for op laplace
+   - s7 pg 6
+   - tl;dr we split it in 2 and get sum the eigenvalues
+
+* max principle and stuff
+ - \(\Delta\) = op laplace
+ - \(\Delta u = 0 \) means \(u\) armonică
+ - \(\Delta u \geq 0 \) means \(u\) subarmonică
+ - \(\Delta u \leq 0 \) means \(u\) super-armonică
+** The actual thing
+ - s9 pg 3
+ Dacă \( C^2(\Omega) \cap C(\bar{\Omega})\) și \( \Delta \geq 0 \text{ în } \Omega \)  at:\\
+ \( \sup\limits_{\bar{\Omega}} u = \sup\limits_{\partial \Omega} u \)\\
+ și dacă \(\exists \bar{x} \in \Omega \) aî \(u(\bar{x}) = \sup\limits_{\bar{\Omega}} u \) at \(u \equiv \) const
+** unicitatea sol dirichlet
+ - s9 pg 4
+ - tl;dr if we have
+    #+begin_export latex
+    \[ 
+    \begin{cases}
+    \Delta u = f, & \text{ în } \Omega \subseteq \R^d\\
+    u = f, & \text{ pe } \partial \Omega
+    \end{cases}
+    \]
+    #+end_export
+  we give \(v = u_1 - u_2\)
+ #+begin_export latex
+ \[ 
+ \begin{cases}
+    \Delta v = 0, & \text{ în } \Omega \subseteq \R^d\\
+    v = 0, & \text{ pe } \partial \Omega
+    \end{cases}
+    \]
+ #+end_export
+ and by the "max principle" we have: \( \sup\limits_\Omega v \leq 0\)
+ we switch \(u_1 \) and \(u_2\) and we get \(v = 0\) ie \(u_1 = u_2\)
+ 
+** strong max principle (aka pp Hopf)
+   Dacă \(\bar{x} \in \partial \Omega \) și \(u(\bar{x}) = M \) at:\\
+   \(\displaystyle \parti{u}{\nu} (\bar{x}) >0 \)\\
+   sau \(\displaystyle \parti{u}{\nu} (\bar{x}) = 0 \) și \(u \equiv M \) în \Omega   
+* variational principle
+  - Fundamental sol for laplace:
+    #+begin_export latex
+    \[
+    E(x) = \begin{dcases}
+    \frac{1}{2\pi} \ln|x|, & d=2\\
+    -\frac{1}{(d-2)\omega_d|x|^{d-2}},& d> 2
+    \end{dcases}
+    \]
+    #+end_export
+   unde (aka aria bilei unitate):
+   \[\omega_d = \mu_{d-1}(\partial B_1) = \int_{\partial B_1}  1 d \sigma \]
+ - btw: \( E(x) = E(|x|)\)
+ - Riemann-green: (c8)
+   #+begin_export latex
+   \[
+   \int_\Omega E(x-y) \Delta u(y) dy - \int_\Omega E(x-y) \parti{u}{\nu_y}(y) d\sigma_y +
+   \int_{\partial\Omega}  \parti{}{\nu_y}E(x-y) u(y) d\sigma_y =
+   \begin{cases}
+   u(x), & x \in \Omega,\\
+   \frac{1}{2} u(x), & x \in \partial\Omega,\\
+   0, & x \in \R^d \setminus \bar{\Omega}
+   \end{cases}
+   \]
+   #+end_export
+** actual solving - übermelnig - pg 115,117,118, 121,122:
+ - Sol variationala e sol clasica
+ având:
+ #+begin_export latex
+ \[
+\begin{cases}
+ - \delta u = f, &\Omega\\
+ u= 0, &\partial\Omega\\
+\end{cases}
+ \]
+ #+end_export
+ definim
+ \[V = \left\{v \in C^1_p(\Omega) \mid v=0 \text{ pe } \partial \Omega \right\}\]
+ calcul formal (via Green formula 1; it's exacly this), \(u\in C^2(\Omega)\):
+ \[-\int_\Omega \Delta u v\, d\mu = \int_\Omega \nabla u\nabla v\,d\mu-
+ \int_{\partial\Omega} \parti{u}{\nu} v\,d\sigma\]
+
+sigh, see the pages mentioned above
+* fourier transform:
+ - def: \[\hat{f}(\lambda) = \frac{1}{2\pi} \int_{-\infty}^{\infty} f(x)\ e^{- i \lambda x}\,dx\]
+ - see https://en.wikipedia.org/wiki/Fourier_transform#Functional_relationships,_one-dimensional
+ - \(\hat{u}^{(k)}(\lambda) = \widehat{[(-ix)^k u(x) ]} (\lambda) \)
+ - \(\widehat{u^{(k)}}(\lambda) = (2\pi{}i \lambda)^k \hat{u}(\lambda) \)
+ - \(\widehat{u*v}(\lambda) = \hat{u}(\lambda)\hat{v}(\lambda)\)
+ - \(\widehat{u\cdot v}(\lambda) = \hat{u}(\lambda)*\hat{v}(\lambda)\)
+ - \(\widehat{u_x}(\lambda) = i \lambda \hat{u}(\lambda)\)
+ - \(\widehat{u_{xx}}(\lambda) = - \lambda^2 \hat{u}(\lambda)\)
+ - \(\widehat{u_t}(\lambda) = \parti{}{t} \hat{u}(\lambda)\)
+ - \(\widehat{u_{tt}}(\lambda) = \parti{^2}{t^2} \hat{u}(\lambda)\)
+ - \(\widehat{u(x-a)}(\lambda) = e^{-ia \lambda} \hat{u} (\lambda) \)
+ - \(\widehat{\hat{u}(x)}(\lambda) = \hat{u} (-\lambda) \)
+ - \(\widehat{\hat{u}(ax)}(\lambda) = \frac{1}{|a|} \hat{u}\left (\frac{\lambda}{a}\right) \)
+ 
 * toc
 ** course
  - C1: basic shit
@@ -148,7 +267,18 @@
    - differential subvariety stuff 
    - green's formulas
    - convolutions
-   - that weird \(E\)lementary thing
+   - that weird fundam\(E\)ntal thing
+ - C8:
+   - unicitate, existenta, repr integrala, dependenta de datele pb, approx numerica
+   - fundamental solution for \(\Delta\) - op laplace
+   - riemann-green
+ - C9:
+   - riemann green again
+   - unicitate, existenta, repr integrala, dependenta de datele pb, approx numerica, but actually done
+ - c10
+   - pp maxim general
+   - sol variationale, finally pg 8
+ - s11
 ** seminaries
 *** S1
  - tl;dr normal differential equations
@@ -165,18 +295,65 @@
  - sturm-liouville stuff
 *** S2, s3
  - sturm-liouville and fourier exercises
-*** s4:?
+*** s4:
  - met sep variabilelor pg 4
  - fundamental solution pg 10
 *** s5
  - green shit
-*** s6
+*** s6, s7
  - separation of variabiles for sturm-liouvile problems + green - pg 3 
+*** s7
+  - solving eigen-value problems for \(\Delta\)
+*** s8
+  - recapitulare
+*** s9, s10, s11
+ - pp de maxim +aplicatii
+*** s11
+ - that weird fundam\(E\)ntal thing pg 11
+*** s12
+ - variational thing
 ** that old book
  - green - pg 39
 ** melnig thing
  - 7 - val proprii
  - 15 - parseval stuff
+
+** über-melnig thing - maed bai benni
+Most of the stuff are seen in the melnig seminaries:
+
+Par example
+*** Ex 1: Sturm- Liouville: page 6 - 14
+Replace a with smth else ofc.
+
+\smallskip
+*** Ex2: Ar ca ... ortogonale   page 4 -  6
+    
+    
+    
+    Also Id Parseval + Dezv in serii Fourier: page 15 - 30
+\smallskip
+
+*** Ex3: Metoda separarii variabilelor: mostly from page 42 to -  102
+
+Furthermore, there is the list on which to calculate...
+
+Most seen stuff: metoda separarii, pb parabolica: page 32
+
+
+An example : page 36
+
+
+Pb hiperbolica: page 47 and 86
+
+Also check Sem9, page 80
+
+*** Ex: 4 problema eliptica la limita: page 91,
+
+Principiul de maxim: page 103
+
+Formularea variationala pt elipsa: page 115, also s13-14 first pages
+
+*** Ex 6: transformata fourier: check s14, page 13
 
 * things to know
  - sp Hilbert, serii Fourier, pb Sturm-Liouville
@@ -188,7 +365,3 @@
 
  - oral: he asks bout some theory bit
 
-* todo:
- - do some fourier shit
- - "sep variabilelor"?
- - green shit for liouville and 
