@@ -1,4 +1,4 @@
-% Created 2021-01-27 Mi 17:56
+% Created 2021-01-27 Mi 20:17
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -32,7 +32,7 @@
 
 
 \section*{might be useful}
-\label{sec:org3698df7}
+\label{sec:org8e94b38}
 \[ \frac{d}{dx} \left (\int_{0}^{x} f(x,y)\,dy \right) = f\big(x,x) + \int_{0}^{x}\frac{\partial}{\partial x} f(x,y) \,dy\]
 
 \medskip
@@ -69,16 +69,24 @@ also:
 \[ f*g (x) = \int_{\R^d} f(x-y) g(y)dy \]
 \item REMEMBER THE NORM FOR THE FOURIER THING:
 \[ u(x) = \sum_k \frac{1}{\|\phi_k\|^2} \int_a^b u(x) \phi_k(x) dx \]
+\item Ec dif ordin I
 \end{itemize}
+\[x' = a(t)x + b(t) \quad \quad x = e^{\int a(t)dt} \left( C + \int e^{-\int a(t) dt} b(t) dt \right)\]
 \subsection*{coś, sin stuff:}
-\label{sec:org7281969}
+\label{sec:org96544bc}
 \begin{itemize}
 \item \(e^{ix} = \cos x + i \sin x\)
+\item \(\sin (k \pi) = 0\)
+\item \(\cos (k \pi) = (-1)^k\)
+\item \(\int \sin = - \cos\)
+\item \(\int \cos = \sin\)
+\item \(\sin' = \cos\)
+\item \(\cos' = - \sin\)
 \item \(\sin x = \dfrac{e^{ix}-e^{-ix}}{2i}\)
 \item \(\cos x = \dfrac{e^{ix}+e^{-ix}}{2}\)
 \end{itemize}
 \subsubsection*{product to sum}
-\label{sec:orgaca7180}
+\label{sec:org04d6dff}
 \begin{itemize}
 \item \(2\cos \theta \cos \varphi = {{\cos(\theta - \varphi) + \cos(\theta + \varphi)}}\)
 \item \(2\sin \theta \sin \varphi = {{\cos(\theta - \varphi) - \cos(\theta + \varphi)} }\)
@@ -89,7 +97,7 @@ also:
 \end{itemize}
 
 \subsubsection*{sum to product}
-\label{sec:org84ef8d0}
+\label{sec:org5edaa9f}
 \begin{itemize}
 \item \(\sin \theta \pm \sin \varphi = 2 \sin\left( \dfrac{\theta \pm \varphi}{2} \right) \cos\left( \dfrac{\theta \mp \varphi}{2} \right)\)
 \item \(\cos \theta + \cos \varphi = 2 \cos\left( \dfrac{\theta + \varphi} {2} \right) \cos\left( \dfrac{\theta - \varphi}{2} \right)\)
@@ -98,14 +106,14 @@ also:
 
 
 \section*{conditions}
-\label{sec:org719911e}
+\label{sec:org0404746}
 \begin{itemize}
 \item dirichlet: \(u(x) = f(x)\) pe \(\partial \Omega\)
 \item newman: \(\parti{u}{\nu}(x) = f(x)\) pe \(\partial \Omega\)
 \item robin: \(\parti{u}{\nu}(x) +u(x) = f(x)\) pe \(\partial \Omega\)
 \end{itemize}
 \section*{misc}
-\label{sec:org392470e}
+\label{sec:orgba4fd7d}
 \begin{itemize}
 \item proiectie pe subspatii inchise:
 \end{itemize}
@@ -124,9 +132,9 @@ also:
 \end{itemize}
 
 \section*{Sturm-Liouville - S1}
-\label{sec:org26966ad}
+\label{sec:orgad2e22c}
 \subsection*{valori proprii}
-\label{sec:org9eedb76}
+\label{sec:orgfd4732d}
 \begin{itemize}
 \item c3 - pg 5
 \item Melnig thing pg 7
@@ -153,13 +161,13 @@ we get some restrictions for \(\alpha\) and \(\beta\)
 and, tada, ya get some \(\lambda_k, \varphi_k\)
 
 \section*{Green's function:}
-\label{sec:orgc837b53}
+\label{sec:orgdc69ea9}
 \begin{itemize}
 \item for n-th order differential equations:
 see green-kurzgesagt
 \end{itemize}
 \section*{separation of variables}
-\label{sec:org97f0a88}
+\label{sec:org4b6079f}
 \begin{itemize}
 \item see s6 - pg 2
 \item we have:
@@ -206,14 +214,14 @@ aka
   \[G \big((x, y), (t, s)\big) = \sum_{k=1}^\infty G_k(y, s) \frac{1}{\| \phi_k\|^2}  \phi_k(t) \phi_k(x) \]
 
 \subsection*{eigen values for op laplace}
-\label{sec:org66166ec}
+\label{sec:orgb8fded2}
 \begin{itemize}
 \item s7 pg 6
 \item tl;dr we split it in 2 and get sum the eigenvalues
 \end{itemize}
 
 \section*{max principle and stuff}
-\label{sec:orgb0dbb39}
+\label{sec:orgb9617fd}
 \begin{itemize}
 \item \(\Delta\) = op laplace
 \item \(\Delta u = 0\) means \(u\) armonică
@@ -221,7 +229,7 @@ aka
 \item \(\Delta u \leq 0\) means \(u\) super-armonică
 \end{itemize}
 \subsection*{The actual thing}
-\label{sec:orgae13937}
+\label{sec:org55609c0}
 \begin{itemize}
 \item s9 pg 3
 \end{itemize}
@@ -229,7 +237,7 @@ Dacă \(C^2(\Omega) \cap C(\bar{\Omega})\) și \(\Delta \geq 0 \text{ în } \Ome
 \(\sup\limits_{\bar{\Omega}} u = \sup\limits_{\partial \Omega} u\)\\
 și dacă \(\exists \bar{x} \in \Omega\) aî \(u(\bar{x}) = \sup\limits_{\bar{\Omega}} u\) at \(u \equiv\) const
 \subsection*{unicitatea sol dirichlet}
-\label{sec:org8903e7b}
+\label{sec:org2464afb}
 \begin{itemize}
 \item s9 pg 4
 \item übermelnig 109
@@ -252,12 +260,12 @@ and by the "max principle" we have: \(\sup\limits_\Omega v \leq 0\)
 we switch \(u_1\) and \(u_2\) and we get \(v = 0\) ie \(u_1 = u_2\)
 
 \subsection*{strong max principle (aka pp Hopf)}
-\label{sec:org5d8025f}
+\label{sec:org4eff270}
 Dacă \(\bar{x} \in \partial \Omega\) și \(u(\bar{x}) = M\) at:\\
 \(\displaystyle \parti{u}{\nu} (\bar{x}) >0\)\\
 sau \(\displaystyle \parti{u}{\nu} (\bar{x}) = 0\) și \(u \equiv M\) în \(\Omega\)   
 \section*{variational principle}
-\label{sec:orgedd7397}
+\label{sec:org6c65463}
 \begin{itemize}
 \item Fundamental sol for laplace:
 \[
@@ -283,7 +291,7 @@ u(x), & x \in \Omega,\\
 \]
 \end{itemize}
 \subsection*{actual solving - übermelnig - pg 115,117,118, 121,122:}
-\label{sec:org020d30f}
+\label{sec:org4460e93}
 \begin{itemize}
 \item Sol variationala e sol clasica
 \end{itemize}
@@ -322,7 +330,7 @@ for unicitate \(w=u_1-u_2\), \(v = w\) and we get \(a(w, w) = 0\)
 
 sigh, see the pages mentioned above
 \section*{fourier transform:}
-\label{sec:org9fe69d1}
+\label{sec:orga796e95}
 \begin{itemize}
 \item def: \[\hat{f}(\lambda) = \frac{1}{2\pi} \int_{-\infty}^{\infty} f(x)\ e^{- i \lambda x}\,dx\]
 \item see \url{https://en.wikipedia.org/wiki/Fourier\_transform\#Functional\_relationships,\_one-dimensional}
@@ -340,9 +348,9 @@ sigh, see the pages mentioned above
 \end{itemize}
 
 \section*{toc}
-\label{sec:org86e45e6}
+\label{sec:org72a0155}
 \subsection*{course}
-\label{sec:orga41aabd}
+\label{sec:org527d973}
 \begin{itemize}
 \item C1: basic shit
 \item C2: 
@@ -400,9 +408,9 @@ sigh, see the pages mentioned above
 \item s11
 \end{itemize}
 \subsection*{seminaries}
-\label{sec:org42d9c54}
+\label{sec:org1a95f2e}
 \subsubsection*{S1}
-\label{sec:orgaf05767}
+\label{sec:org5d397d0}
 \begin{itemize}
 \item tl;dr normal differential equations
 \end{itemize}
@@ -418,75 +426,75 @@ u_k(t) = e^{-\lambda_kt} u_k^0 + \int_0^t \exp(-\lambda_k(t-s)) f_k(s)ds
 \item sturm-liouville stuff
 \end{itemize}
 \subsubsection*{S2, s3}
-\label{sec:org660040b}
+\label{sec:org3d50a45}
 \begin{itemize}
 \item sturm-liouville and fourier exercises
 \end{itemize}
 \subsubsection*{s4:}
-\label{sec:org7d7e8d2}
+\label{sec:org0dccee3}
 \begin{itemize}
 \item met sep variabilelor pg 4
 \item fundamental solution pg 10
 \end{itemize}
 \subsubsection*{s5}
-\label{sec:org5b57158}
+\label{sec:orge123146}
 \begin{itemize}
 \item green shit
 \end{itemize}
 \subsubsection*{s6, s7}
-\label{sec:orgedd43cc}
+\label{sec:orgd9306cb}
 \begin{itemize}
 \item separation of variabiles for sturm-liouvile problems + green - pg 3
 \end{itemize}
 \subsubsection*{s7}
-\label{sec:org1d0ebab}
+\label{sec:org329d46a}
 \begin{itemize}
 \item solving eigen-value problems for \(\Delta\)
 \end{itemize}
 \subsubsection*{s8}
-\label{sec:orge04868f}
+\label{sec:org5695c3b}
 \begin{itemize}
 \item recapitulare
 \end{itemize}
 \subsubsection*{s9, s10, s11}
-\label{sec:org688c88c}
+\label{sec:orge1e7cee}
 \begin{itemize}
 \item pp de maxim +aplicatii
 \end{itemize}
 \subsubsection*{s11}
-\label{sec:orgdd44ba2}
+\label{sec:orgcc0c3a9}
 \begin{itemize}
 \item that weird fundam\(E\)ntal thing pg 11
 \end{itemize}
 \subsubsection*{s12}
-\label{sec:org0ed0cc6}
+\label{sec:org8450e0c}
 \begin{itemize}
 \item variational thing
 \end{itemize}
 \subsection*{that old book}
-\label{sec:org9f01b12}
+\label{sec:org8792e4d}
 \begin{itemize}
 \item green - pg 39
 \end{itemize}
 \subsection*{melnig thing}
-\label{sec:org7985b37}
+\label{sec:org5644fcd}
 \begin{itemize}
 \item 7 - val proprii
 \item 15 - parseval stuff
 \end{itemize}
 
 \subsection*{über-melnig thing - maed bai benni}
-\label{sec:org09b0263}
+\label{sec:org0f9b65f}
 Most of the stuff are seen in the melnig seminaries:
 
 Par example
 \subsubsection*{Ex 1: Sturm- Liouville: page 6 - 14}
-\label{sec:orgda54e25}
+\label{sec:orgf904c85}
 Replace a with smth else ofc.
 
 \smallskip
 \subsubsection*{Ex2: Ar ca \ldots{} ortogonale   page 4 -  6}
-\label{sec:org4d2bedb}
+\label{sec:org788777a}
 
 
 
@@ -494,7 +502,7 @@ Also Id Parseval + Dezv in serii Fourier: page 15 - 30
 \smallskip
 
 \subsubsection*{Ex3: Metoda separarii variabilelor: mostly from page 42 to -  102}
-\label{sec:orgfbfede2}
+\label{sec:org264d165}
 
 Furthermore, there is the list on which to calculate\ldots{}
 
@@ -509,17 +517,17 @@ Pb hiperbolica: page 47 and 86
 Also check Sem9, page 80
 
 \subsubsection*{Ex: 4 problema eliptica la limita: page 91,}
-\label{sec:orge6f2a55}
+\label{sec:org5732ef1}
 
 Principiul de maxim: page 103
 
 Formularea variationala pt elipsa: page 115, also s13-14 first pages
 
 \subsubsection*{Ex 6: transformata fourier: check s14, page 13}
-\label{sec:org0205a9a}
+\label{sec:org78ea5bc}
 
 \section*{things to know}
-\label{sec:orga081374}
+\label{sec:orgd3c725e}
 \begin{itemize}
 \item sp Hilbert, serii Fourier, pb Sturm-Liouville
 \item separarea variabilelor (pb val proprii, hip, parab, eliptice - serii fourier

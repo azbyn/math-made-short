@@ -36,8 +36,16 @@
   \[ f*g (x) = \int_{\R^d} f(x-y) g(y)dy \]
  - REMEMBER THE NORM FOR THE FOURIER THING:
    \[ u(x) = \sum_k \frac{1}{\|\phi_k\|^2} \int_a^b u(x) \phi_k(x) dx \]
+ - Ec dif ordin I
+ \[x' = a(t)x + b(t) \quad \quad x = e^{\int a(t)dt} \left( C + \int e^{-\int a(t) dt} b(t) dt \right)\]
 ** coś, sin stuff:
   - \(e^{ix} = \cos x + i \sin x\)
+  - \(\sin (k \pi) = 0\)
+  - \(\cos (k \pi) = (-1)^k\)
+  - \(\int \sin = - \cos\)
+  - \(\int \cos = \sin\)
+  - \(\sin' = \cos\)
+  - \(\cos' = - \sin\)
   - \(\sin x = \dfrac{e^{ix}-e^{-ix}}{2i}\)
   - \( \cos x = \dfrac{e^{ix}+e^{-ix}}{2}\)
 *** product to sum
