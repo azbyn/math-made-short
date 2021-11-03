@@ -1,0 +1,178 @@
+#+OPTIONS: toc:nil
+#+OPTIONS: num:nil
+#+LATEX_HEADER: \usepackage{geometry}\geometry{a4paper,left=15mm,right=20mm,top=20mm,bottom=30mm}
+
+* misc
+ - \(P(A|B) = \frac {P(A \cap B)}{P(B)}\)
+ - Bayes: \( P(B|A) = \frac {P(A|B) P(B)}{P(B)}\)
+ - \( \displaystyle (S^*)^2 = \frac{n}{n-1} S^2 = \frac{1}{n-1} \sum_{i=1}^{n} (X_i- \bar{X})^2\);
+ - \( S^* = \sqrt{(S^*)^2}, S = \sqrt{S^2} \), duh;
+ - \(\mathrm{Var}(X) = \mathbb{E}(X^2) - \left(\mathbb{E}(X)\right)^2\);
+ 
+ - \(\mathrm{cov}(X, Y) = \mathbb{E}\left(( X - \bar{X}  ) (Y - \bar{Y}) \right) = \mathbb{E}(XY) - \mathbb{E}(X)\mathbb{E}(Y)\);
+* ordinary least squares
+
+  \[ b  = \frac{\sum(X-\bar{X})(Y-\bar{Y})}{\sum(X-\bar{X}^2} = \frac{\sum xy}{x^2}, \]
+  \(x =X-\bar{X}, y =Y-\bar{Y}\)
+
+  (the line goes to through \((\bar{X}, \bar{Y})\))
+
+** standard error:
+   the correct regresion line is \(Y_i = \alpha_i+\beta_i X_i + \varepsilon_i\)
+
+   Standard error:
+   \[ \mathrm{SE} = \frac{\sigma }{\sqrt{\sum x^2}} = \frac{\sigma}{\sqrt{n} S_x} \]
+
+   Smol SE is good.
+
+** standard squared error
+   (we lost 2 degs of freedom)
+   
+   \[ \mathrm{SSE} = \frac{1}{n-2} \sum (Y-\hat{Y})^2 \]
+
+   
+** P values and stuff
+   \[ t = \frac{b}{\mathrm{SE}} \]
+
+   \(H_0\): b = 0 (ie there's no relation)
+   
+   if \( t  > T_{\alpha}^{(n-2)} \) then we reject \(H_0\)
+   
+   else we don't
+   
+   (with $\alpha$ liek .005)
+** F-statistic
+   (dont worry about it)
+   
+   similar to T (from above, but with)
+   
+   \[F = \frac{\mathrm{RegSS}}{\mathrm{SSE}/(n-2)}\]
+
+   and reject if \(>F^{(1, n-2)}_\alpha\)
+   
+** R^2
+
+   \[ R^2 = \frac{\mathrm{RegSS}}{\mathrm{TSS}} = 1 - \frac{SSE}{TSS} = 1 - \frac{\sum (Y-\bar{Y})^2}{\sum (Y-\hat{Y})^2} \]
+
+   \(\hat{Y}\) is the esitmated value of Y (ie \(\hat{Y} = a + b X\))
+   
+   \(\mathrm{RegSS} = \sum (\hat{Y}-\bar{Y})^2 \)
+
+   
+* Confidence intervals - tl;dr (this is a lot more information than we need)
+** for the average
+#+begin_export latex
+\renewcommand{\arraystretch}{2}
+  \begin{tabular}{|l|l|l|l|l|l|}
+  \hline
+  type & useful & \(X\) type & $n$ size & \(\sigma\) known & the interval  \\
+\hline
+  bilateral & x   & \(~\mathcal{N} (\mu, \sigma^2) \) & whatever & yes &
+  \( \mu \in \left(\bar{X} - \dfrac{\sigma}{\sqrt{n}} z_{1-\alpha/2}, \bar{X} + \dfrac{\sigma}{\sqrt{n}} z_{1-\alpha/2}\right)
+ \) \\ \hline
+bilateral & x   & whatever & big & yes &
+  \( \mu \in \left(\bar{X} - \dfrac{\sigma}{\sqrt{n}} z_{1-\alpha/2}, \bar{X} + \dfrac{\sigma}{\sqrt{n}} z_{1-\alpha/2}\right)
+ \) \\ \hline
+ no sup &    & \(\sim\mathcal{N} (\mu, \sigma^2) \) & big & yes &
+  \( \mu \in \left(\bar{X} - \dfrac{\sigma}{\sqrt{n}} z_{1-\alpha}, \infty \right)
+ \) \\ \hline
+ no inf &    & \(\sim\mathcal{N} (\mu, \sigma^2) \) & big & yes &
+  \( \mu \in \left(-\infty, \bar{X} + \dfrac{\sigma}{\sqrt{n}} z_{1-\alpha}\right)
+ \) \\ \hline
+ bilateral & x  & whatever & big & no &
+  \( \mu \in \left(\bar{X} - \dfrac{S^*}{\sqrt{n}} z_{1-\alpha/2}, \bar{X} + \dfrac{S^*}{\sqrt{n}} z_{1-\alpha/2}\right)
+ \) \\ \hline
+unilateral &  & whatever & big & no &
+like rows 2 and 3 but with \(S^*\)
+  \\ \hline
+bilateral & x   & \(\sim\mathcal{N} (\mu, \sigma^2) \)  & smol & no &
+  \( \mu \in \left(\bar{X} - \dfrac{S^*}{\sqrt{n}} t_{1-\alpha/2,n-1}, \bar{X} + \dfrac{S^*}{\sqrt{n}} t_{1-\alpha/2, n-1}\right)
+ \) \\ \hline
+unilateral &    & \(\sim\mathcal{N} (\mu, \sigma^2) \)  & smol & no &
+like rows 2 and 3 but with \(S^*\) and \(t_{1-\alpha, n-1} 
+ \) \\ \hline
+
+  \end{tabular}
+
+#+end_export
+
+** for the variance (dispersion)
+   just ignore this
+   
+#+begin_export latex
+\renewcommand{\arraystretch}{2}
+  \begin{tabular}{|l|l|l|l|l|l|}
+  \hline
+  type &  where to find & \(X\) type & $n$ size & \(\mu\) known & the interval  \\
+\hline
+  bilateral & C5 - pg 6   & \(\sim\mathcal{N} (\mu, \sigma^2) \) & smol & yes &
+  \( \displaystyle \sigma^2 \in \left( \frac{\sum_{i=1}^n (X_i-\mu)^2}{\chi^2_{\alpha/2, n}}, 
+\frac{\sum_{i=1}^n (X_i-\mu)^2}{\chi^2_{1-\alpha/2, n}}  \right)
+\) \\ \hline
+
+bilateral & C5 - pg 6   & \(\sim\mathcal{N} (\mu, \sigma^2) \) & smol & no &
+  \( \displaystyle \sigma^2 \in \left( \frac{(n-1) (S^*)^2 }{\chi^2_{\alpha/2, n-1}}, 
+\frac{(n-1) (S^*)^2 }{\chi^2_{1-\alpha/2, n-1}}, \right)
+ \) \\ \hline
+
+  \end{tabular}
+#+end_export
+
+\medskip
+for \(n\) large, look at C5 pg 7 - obs 1.3
+tl;dr we make it a normal distribution
+
+
+* Testarea ipotezelor statistice - tl;dr
+  don't worry about it
+** For the average
+\((H_0): \mu = \mu_0\)
+\medskip
+
+#+begin_export latex
+  \renewcommand{\arraystretch}{2}
+  \begin{tabular}{|l|l|l|l|l|l|l|}
+  \hline
+  name   &    where to find & \(X\) type & $n$ size & \(\sigma\) known & $\text{thing}_0$ & bilateral tl;dr  \\
+\hline
+  \(Z\) test  & C6 - pg 6-9   & \(\sim\mathcal{N} (\mu, \sigma^2) \) & big & yes &
+  \(z_0 = \dfrac{\bar{x} - \mu_0}{\sigma / \sqrt{n}} \) & \(z_0 \in \left( -z_{1-\alpha/2}, z_{1-\alpha/2} \right) \) \\
+ \hline
+  \(T\) test  & C6 - pg 10-13   & \(\sim\mathcal{N} (\mu, \sigma^2) \) & smol & no  &
+  \(z_0 = \dfrac{\bar{x} - \mu_0}{s^* / \sqrt{n}} \) & \( t_0 \in \left( -t_{1-\alpha/2,n-1}, t_{1-\alpha/2, n-1} \right) \) \\
+\hline
+  \end{tabular}
+
+#+end_export
+
+** For the variance (dispersion)
+\((H_0): \sigma = \sigma_0\)
+\medskip
+
+  \(\chi^2\)-test
+
+At C6 - pg 13-14
+\medskip
+
+#+begin_export latex
+\(\chi^2_0 = \dfrac{(n-1) (s^*)^2}{\sigma_0^2} \)
+\medskip
+
+\(H_0\) is acepted (or pedantically  "not rejected") if:
+
+\( \chi^2_0 \in (\chi^2_{1-\alpha/2, n-1}, \chi^2_{1-\alpha/2, n-1}) \)
+#+end_export
+
+\medskip
+also see S10/S11 - pg 4
+
+*** \(F\) test for dispertion ratios
+see C6 p14 - 16
+also see S10/S11 - pg9
+\bigskip
+
+Sun Tzu said: “All exams are based on deception”.
+# Be extremely subtle even to the point of formlessness. 
+# Be extremely mysterious even to the point of soundlessness.
+# Thereby you can be the director of the exam's fate”.
+(the quote in statistics was better)
