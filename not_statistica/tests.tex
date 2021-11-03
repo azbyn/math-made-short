@@ -1,4 +1,4 @@
-% Created 2021-11-03 Mi 20:25
+% Created 2021-11-03 Mi 20:37
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -29,26 +29,28 @@
 
 
 \section*{misc}
-\label{sec:org88bbe4d}
+\label{sec:orgb709a65}
 \begin{itemize}
 \item \(P(A|B) = \frac {P(A \cap B)}{P(B)}\)
 \item Bayes: \(P(B|A) = \frac {P(A|B) P(B)}{P(B)}\)
 \item \(\displaystyle (S^*)^2 = \frac{n}{n-1} S^2 = \frac{1}{n-1} \sum_{i=1}^{n} (X_i- \bar{X})^2\);
-\item \(S^* = \sqrt{(S^*)^2}, S = \sqrt{S^2}\), duh;
+\item \(S^* = \sqrt{(S^*)^2}, S = \sqrt{S^2}\)
 \item \(\mathrm{Var}(X) = \mathbb{E}(X^2) - \left(\mathbb{E}(X)\right)^2\);
 
 \item \(\mathrm{cov}(X, Y) = \mathbb{E}\left(( X - \bar{X}  ) (Y - \bar{Y}) \right) = \mathbb{E}(XY) - \mathbb{E}(X)\mathbb{E}(Y)\);
 \end{itemize}
 \section*{ordinary least squares}
-\label{sec:org30e47f0}
+\label{sec:org03964bf}
 
-\[ b  = \frac{\sum(X-\bar{X})(Y-\bar{Y})}{\sum(X-\bar{X}^2} = \frac{\sum xy}{x^2}, \]
+\[ b  = \frac{\sum(X-\bar{X})(Y-\bar{Y})}{\sum(X-\bar{X})^2} = \frac{\sum xy}{x^2}, \]
 \(x =X-\bar{X}, y =Y-\bar{Y}\)
+
+\(a\) from \(Y=a + bX\)
 
 (the line goes to through \((\bar{X}, \bar{Y})\))
 
 \subsection*{standard error:}
-\label{sec:orge41599d}
+\label{sec:orgba9ccd2}
 the correct regresion line is \(Y_i = \alpha_i+\beta_i X_i + \varepsilon_i\)
 
 Standard error:
@@ -57,14 +59,14 @@ Standard error:
 Smol SE is good.
 
 \subsection*{standard squared error}
-\label{sec:org0beb46f}
+\label{sec:org8f4f4fe}
 (we lost 2 degs of freedom)
 
 \[ \mathrm{SSE} = \frac{1}{n-2} \sum (Y-\hat{Y})^2 \]
 
 
 \subsection*{P values and stuff}
-\label{sec:orgd14eed7}
+\label{sec:org1ec6588}
 \[ t = \frac{b}{\mathrm{SE}} \]
 
 \(H_0\): b = 0 (ie there's no relation)
@@ -75,7 +77,7 @@ else we don't
 
 (with \(\alpha\) liek .005)
 \subsection*{F-statistic}
-\label{sec:org27dc304}
+\label{sec:orgf131b1d}
 (dont worry about it)
 
 similar to T (from above, but with)
@@ -85,7 +87,7 @@ similar to T (from above, but with)
 and reject if \(>F^{(1, n-2)}_\alpha\)
 
 \subsection*{R\textsuperscript{2}}
-\label{sec:org51ea195}
+\label{sec:org57996da}
 
 \[ R^2 = \frac{\mathrm{RegSS}}{\mathrm{TSS}} = 1 - \frac{SSE}{TSS} = 1 - \frac{\sum (Y-\bar{Y})^2}{\sum (Y-\hat{Y})^2} \]
 
@@ -95,9 +97,9 @@ and reject if \(>F^{(1, n-2)}_\alpha\)
 
 
 \section*{Confidence intervals - tl;dr (this is a lot more information than we need)}
-\label{sec:org2103b52}
+\label{sec:org01f9536}
 \subsection*{for the average}
-\label{sec:org451fd8a}
+\label{sec:org36b79cc}
 \renewcommand{\arraystretch}{2}
   \begin{tabular}{|l|l|l|l|l|l|}
   \hline
@@ -131,7 +133,7 @@ like rows 2 and 3 but with \(S^*\) and \(t_{1-\alpha, n-1}
   \end{tabular}
 
 \subsection*{for the variance (dispersion)}
-\label{sec:org000c3fa}
+\label{sec:org36e9b22}
 just ignore this
 
 \renewcommand{\arraystretch}{2}
@@ -157,10 +159,10 @@ tl;dr we make it a normal distribution
 
 
 \section*{Testarea ipotezelor statistice - tl;dr}
-\label{sec:org25706f4}
+\label{sec:org527144d}
 don't worry about it
 \subsection*{For the average}
-\label{sec:org0b98537}
+\label{sec:orgd9c7f89}
 \((H_0): \mu = \mu_0\)
 \medskip
 
@@ -178,14 +180,12 @@ don't worry about it
   \end{tabular}
 
 \subsection*{For the variance (dispersion)}
-\label{sec:orgfa49719}
+\label{sec:org2058f61}
 \((H_0): \sigma = \sigma_0\)
 \medskip
 
 \(\chi^2\)-test
 
-At C6 - pg 13-14
-\medskip
 
 \(\chi^2_0 = \dfrac{(n-1) (s^*)^2}{\sigma_0^2} \)
 \medskip
@@ -194,14 +194,8 @@ At C6 - pg 13-14
 
 \( \chi^2_0 \in (\chi^2_{1-\alpha/2, n-1}, \chi^2_{1-\alpha/2, n-1}) \)
 
-\medskip
-also see S10/S11 - pg 4
-
-\subsubsection*{\(F\) test for dispertion ratios}
-\label{sec:org281398a}
-see C6 p14 - 16
-also see S10/S11 - pg9
 \bigskip
+
 
 Sun Tzu said: “All exams are based on deception”.
 

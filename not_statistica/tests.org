@@ -6,14 +6,16 @@
  - \(P(A|B) = \frac {P(A \cap B)}{P(B)}\)
  - Bayes: \( P(B|A) = \frac {P(A|B) P(B)}{P(B)}\)
  - \( \displaystyle (S^*)^2 = \frac{n}{n-1} S^2 = \frac{1}{n-1} \sum_{i=1}^{n} (X_i- \bar{X})^2\);
- - \( S^* = \sqrt{(S^*)^2}, S = \sqrt{S^2} \), duh;
+ - \( S^* = \sqrt{(S^*)^2}, S = \sqrt{S^2} \)
  - \(\mathrm{Var}(X) = \mathbb{E}(X^2) - \left(\mathbb{E}(X)\right)^2\);
  
  - \(\mathrm{cov}(X, Y) = \mathbb{E}\left(( X - \bar{X}  ) (Y - \bar{Y}) \right) = \mathbb{E}(XY) - \mathbb{E}(X)\mathbb{E}(Y)\);
 * ordinary least squares
 
-  \[ b  = \frac{\sum(X-\bar{X})(Y-\bar{Y})}{\sum(X-\bar{X}^2} = \frac{\sum xy}{x^2}, \]
+  \[ b  = \frac{\sum(X-\bar{X})(Y-\bar{Y})}{\sum(X-\bar{X})^2} = \frac{\sum xy}{x^2}, \]
   \(x =X-\bar{X}, y =Y-\bar{Y}\)
+
+  $a$ from $Y=a + bX$
 
   (the line goes to through \((\bar{X}, \bar{Y})\))
 
@@ -151,8 +153,6 @@ tl;dr we make it a normal distribution
 
   \(\chi^2\)-test
 
-At C6 - pg 13-14
-\medskip
 
 #+begin_export latex
 \(\chi^2_0 = \dfrac{(n-1) (s^*)^2}{\sigma_0^2} \)
@@ -163,13 +163,8 @@ At C6 - pg 13-14
 \( \chi^2_0 \in (\chi^2_{1-\alpha/2, n-1}, \chi^2_{1-\alpha/2, n-1}) \)
 #+end_export
 
-\medskip
-also see S10/S11 - pg 4
-
-*** \(F\) test for dispertion ratios
-see C6 p14 - 16
-also see S10/S11 - pg9
 \bigskip
+
 
 Sun Tzu said: “All exams are based on deception”.
 # Be extremely subtle even to the point of formlessness. 
