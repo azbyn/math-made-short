@@ -4,7 +4,7 @@
 
 * misc
  - \(P(A|B) = \frac {P(A \cap B)}{P(B)}\)
- - Bayes: \( P(B|A) = \frac {P(A|B) P(B)}{P(B)}\)
+ - Bayes: \( P(B|A) = \frac {P(A|B) P(B)}{P(A)}\)
  - \( \displaystyle (S^*)^2 = \frac{n}{n-1} S^2 = \frac{1}{n-1} \sum_{i=1}^{n} (X_i- \bar{X})^2\);
  - \( S^* = \sqrt{(S^*)^2}, S = \sqrt{S^2} \)
  - \(\mathrm{Var}(X) = \mathbb{E}(X^2) - \left(\mathbb{E}(X)\right)^2\);
